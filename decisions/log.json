@@ -1,0 +1,54 @@
+{
+  "$description": "Structured decision records. See /skills/decisions.md for format and rules.",
+  "entries": [
+    {
+      "id": "2026-04-27-001",
+      "date": "2026-04-27",
+      "type": "library",
+      "title": "Adopt AI Design Playbook structure",
+      "rationale": "Codebase as single source of truth eliminates the Figma-to-code translation layer. Skill files persist context across Claude sessions; tokens.css enforces consistency at the system level rather than per-component.",
+      "alternatives": [
+        "Keep Figma + manual handoff (slower feedback loop, two sources of truth)",
+        "Storybook-only system (no canvas/prototype layer for testing user flows)"
+      ],
+      "affected_files": [
+        "/CLAUDE.md",
+        "/skills/*",
+        "/styles/tokens.css",
+        "/app/design-system",
+        "/app/canvas",
+        "/app/prototype/[flow]"
+      ],
+      "status": "active",
+      "supersedes": [],
+      "links": ["https://ai-design-playbook.vercel.app"]
+    },
+    {
+      "id": "2026-04-27-002",
+      "date": "2026-04-27",
+      "type": "token",
+      "title": "Placeholder color primitives — replace before first flow",
+      "rationale": "Initial brand palette uses Tailwind/Zinc neutrals + Indigo as a generic-but-WCAG-passing baseline. Real product identity must replace these before any user-facing screens are built; the token-level a11y audit must be re-run after.",
+      "alternatives": [],
+      "affected_files": ["/styles/tokens.css", "/skills/brand.md"],
+      "status": "active",
+      "supersedes": [],
+      "links": []
+    },
+    {
+      "id": "2026-04-27-003",
+      "date": "2026-04-27",
+      "type": "token",
+      "title": "Map --color-action-danger to danger-600 (not 500) for AA contrast",
+      "rationale": "White text on danger-500 (#EF4444) yielded 3.76:1 in `npm run tokens:audit` — fails WCAG AA for normal text. danger-600 (#DC2626) yields 4.83:1 and passes. Hover state moved to danger-500 for the brighter feedback. Fixed at the semantic layer; primitives unchanged.",
+      "alternatives": [
+        "Darken danger-500 primitive (would shift the whole red ramp)",
+        "Bump headers-only AAA target instead of fixing the action color (cheating)"
+      ],
+      "affected_files": ["/styles/tokens.css"],
+      "status": "active",
+      "supersedes": [],
+      "links": []
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "W3C DTCG export. Regenerate after every tokens.css change.",
+  "color": {
+    "primitive": {
+      "neutral-0":   { "$value": "#FFFFFF", "$type": "color" },
+      "neutral-50":  { "$value": "#FAFAFA", "$type": "color" },
+      "neutral-100": { "$value": "#F4F4F5", "$type": "color" },
+      "neutral-200": { "$value": "#E4E4E7", "$type": "color" },
+      "neutral-300": { "$value": "#D4D4D8", "$type": "color" },
+      "neutral-400": { "$value": "#A1A1AA", "$type": "color" },
+      "neutral-500": { "$value": "#71717A", "$type": "color" },
+      "neutral-600": { "$value": "#52525B", "$type": "color" },
+      "neutral-700": { "$value": "#3F3F46", "$type": "color" },
+      "neutral-800": { "$value": "#27272A", "$type": "color" },
+      "neutral-900": { "$value": "#18181B", "$type": "color" },
+      "neutral-950": { "$value": "#09090B", "$type": "color" },
+      "brand-50":    { "$value": "#EEF2FF", "$type": "color" },
+      "brand-100":   { "$value": "#E0E7FF", "$type": "color" },
+      "brand-500":   { "$value": "#4F46E5", "$type": "color", "$description": "Primary brand" },
+      "brand-600":   { "$value": "#4338CA", "$type": "color" },
+      "brand-700":   { "$value": "#3730A3", "$type": "color" },
+      "accent-100":  { "$value": "#FEF3C7", "$type": "color" },
+      "accent-500":  { "$value": "#F59E0B", "$type": "color" },
+      "accent-600":  { "$value": "#D97706", "$type": "color" },
+      "success-100": { "$value": "#D1FAE5", "$type": "color" },
+      "success-500": { "$value": "#10B981", "$type": "color" },
+      "success-600": { "$value": "#059669", "$type": "color" },
+      "danger-100":  { "$value": "#FEE2E2", "$type": "color" },
+      "danger-500":  { "$value": "#EF4444", "$type": "color" },
+      "danger-600":  { "$value": "#DC2626", "$type": "color" }
+    },
+    "semantic": {
+      "surface-default": { "$value": "{color.primitive.neutral-0}",   "$type": "color", "$extensions": { "css-variable": "--color-surface-default" } },
+      "surface-raised":  { "$value": "{color.primitive.neutral-50}",  "$type": "color", "$extensions": { "css-variable": "--color-surface-raised" } },
+      "surface-sunken":  { "$value": "{color.primitive.neutral-100}", "$type": "color", "$extensions": { "css-variable": "--color-surface-sunken" } },
+      "text-primary":    { "$value": "{color.primitive.neutral-900}", "$type": "color", "$extensions": { "css-variable": "--color-text-primary" } },
+      "text-secondary":  { "$value": "{color.primitive.neutral-600}", "$type": "color", "$extensions": { "css-variable": "--color-text-secondary" } },
+      "text-on-brand":   { "$value": "{color.primitive.neutral-0}",   "$type": "color", "$extensions": { "css-variable": "--color-text-on-brand" } },
+      "border-subtle":   { "$value": "{color.primitive.neutral-200}", "$type": "color", "$extensions": { "css-variable": "--color-border-subtle" } },
+      "border-focus":    { "$value": "{color.primitive.brand-500}",   "$type": "color", "$extensions": { "css-variable": "--color-border-focus" } },
+      "action-primary":       { "$value": "{color.primitive.brand-500}", "$type": "color", "$extensions": { "css-variable": "--color-action-primary" } },
+      "action-primary-hover": { "$value": "{color.primitive.brand-600}", "$type": "color", "$extensions": { "css-variable": "--color-action-primary-hover" } },
+      "action-danger":        { "$value": "{color.primitive.danger-500}", "$type": "color", "$extensions": { "css-variable": "--color-action-danger" } }
+    }
+  },
+  "spacing": {
+    "0":  { "$value": "0",      "$type": "dimension" },
+    "1":  { "$value": "0.25rem", "$type": "dimension" },
+    "2":  { "$value": "0.5rem",  "$type": "dimension" },
+    "3":  { "$value": "0.75rem", "$type": "dimension" },
+    "4":  { "$value": "1rem",    "$type": "dimension" },
+    "5":  { "$value": "1.25rem", "$type": "dimension" },
+    "6":  { "$value": "1.5rem",  "$type": "dimension" },
+    "8":  { "$value": "2rem",    "$type": "dimension" },
+    "10": { "$value": "2.5rem",  "$type": "dimension" },
+    "12": { "$value": "3rem",    "$type": "dimension" },
+    "16": { "$value": "4rem",    "$type": "dimension" },
+    "20": { "$value": "5rem",    "$type": "dimension" },
+    "24": { "$value": "6rem",    "$type": "dimension" }
+  },
+  "typography": {
+    "size": {
+      "micro":   { "$value": "0.75rem",  "$type": "dimension" },
+      "small":   { "$value": "0.875rem", "$type": "dimension" },
+      "body":    { "$value": "1rem",     "$type": "dimension" },
+      "h3":      { "$value": "1.25rem",  "$type": "dimension" },
+      "h2":      { "$value": "1.5rem",   "$type": "dimension" },
+      "h1":      { "$value": "2rem",     "$type": "dimension" },
+      "display": { "$value": "3rem",     "$type": "dimension" }
+    },
+    "weight": {
+      "regular":  { "$value": 400, "$type": "fontWeight" },
+      "medium":   { "$value": 500, "$type": "fontWeight" },
+      "semibold": { "$value": 600, "$type": "fontWeight" },
+      "bold":     { "$value": 700, "$type": "fontWeight" }
+    }
+  },
+  "radius": {
+    "none": { "$value": "0",       "$type": "dimension" },
+    "sm":   { "$value": "0.25rem", "$type": "dimension" },
+    "md":   { "$value": "0.5rem",  "$type": "dimension" },
+    "lg":   { "$value": "0.75rem", "$type": "dimension" },
+    "xl":   { "$value": "1rem",    "$type": "dimension" },
+    "full": { "$value": "9999px",  "$type": "dimension" }
+  },
+  "motion": {
+    "duration": {
+      "instant": { "$value": "100ms", "$type": "duration" },
+      "fast":    { "$value": "150ms", "$type": "duration" },
+      "medium":  { "$value": "200ms", "$type": "duration" },
+      "slow":    { "$value": "300ms", "$type": "duration" }
+    },
+    "easing": {
+      "standard":   { "$value": "cubic-bezier(0.4, 0, 0.2, 1)",  "$type": "cubicBezier" },
+      "emphasized": { "$value": "cubic-bezier(0.2, 0, 0, 1)",    "$type": "cubicBezier" }
+    }
+  }
+}

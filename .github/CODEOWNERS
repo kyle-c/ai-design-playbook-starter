@@ -1,0 +1,11 @@
+# Per /skills/decisions.md and the playbook governance section.
+# Update owners once a real team is set up.
+
+/components/ui/*   @design
+/styles/*          @design
+/skills/*          @design
+/decisions/*       @design
+/tokens/*          @design
+
+# Individual screens — engineering aware but not blocking.
+/app/*             @design

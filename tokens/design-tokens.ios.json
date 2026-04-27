@@ -1,0 +1,31 @@
+{
+  "$description": "iOS variant. Spacing in pt (1pt = 1px at 1x scale). Regenerate via Style Dictionary build.",
+  "color": {
+    "primitive": {
+      "neutral-0":   { "$value": "#FFFFFF", "$type": "color" },
+      "neutral-900": { "$value": "#18181B", "$type": "color" },
+      "brand-500":   { "$value": "#4F46E5", "$type": "color" }
+    },
+    "semantic": {
+      "surface-default": { "$value": "{color.primitive.neutral-0}",   "$type": "color" },
+      "text-primary":    { "$value": "{color.primitive.neutral-900}", "$type": "color" },
+      "action-primary":  { "$value": "{color.primitive.brand-500}",   "$type": "color" }
+    }
+  },
+  "spacing": {
+    "1":  { "$value": "4pt",  "$type": "dimension" },
+    "2":  { "$value": "8pt",  "$type": "dimension" },
+    "3":  { "$value": "12pt", "$type": "dimension" },
+    "4":  { "$value": "16pt", "$type": "dimension" },
+    "6":  { "$value": "24pt", "$type": "dimension" },
+    "8":  { "$value": "32pt", "$type": "dimension" }
+  },
+  "typography": {
+    "size": {
+      "body":    { "$value": "16pt", "$type": "dimension" },
+      "h2":      { "$value": "24pt", "$type": "dimension" },
+      "h1":      { "$value": "32pt", "$type": "dimension" },
+      "display": { "$value": "48pt", "$type": "dimension" }
+    }
+  }
+}

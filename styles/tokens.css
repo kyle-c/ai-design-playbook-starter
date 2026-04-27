@@ -1,0 +1,242 @@
+/* ============================================================
+   tokens.css — THE design system source of truth.
+   Three layers: primitive → semantic → component.
+   Components MUST reference semantic tokens, never primitives.
+   ============================================================ */
+
+:root {
+  /* ============================================================
+     LAYER 1 — PRIMITIVES (raw values; never used directly in UI)
+     ============================================================ */
+
+  /* Neutrals */
+  --color-neutral-0:   #FFFFFF;
+  --color-neutral-50:  #FAFAFA;
+  --color-neutral-100: #F4F4F5;
+  --color-neutral-200: #E4E4E7;
+  --color-neutral-300: #D4D4D8;
+  --color-neutral-400: #A1A1AA;
+  --color-neutral-500: #71717A;
+  --color-neutral-600: #52525B;
+  --color-neutral-700: #3F3F46;
+  --color-neutral-800: #27272A;
+  --color-neutral-900: #18181B;
+  --color-neutral-950: #09090B;
+
+  /* Brand */
+  --color-brand-50:  #EEF2FF;
+  --color-brand-100: #E0E7FF;
+  --color-brand-500: #4F46E5;
+  --color-brand-600: #4338CA;
+  --color-brand-700: #3730A3;
+
+  /* Accent */
+  --color-accent-100: #FEF3C7;
+  --color-accent-500: #F59E0B;
+  --color-accent-600: #D97706;
+
+  /* Feedback */
+  --color-success-100: #D1FAE5;
+  --color-success-500: #10B981;
+  --color-success-600: #059669;
+  --color-warning-500: #F59E0B;
+  --color-danger-100:  #FEE2E2;
+  --color-danger-500:  #EF4444;
+  --color-danger-600:  #DC2626;
+
+  /* Spacing scale (4px base) */
+  --space-0:  0;
+  --space-1:  0.25rem; /*  4px */
+  --space-2:  0.5rem;  /*  8px */
+  --space-3:  0.75rem; /* 12px */
+  --space-4:  1rem;    /* 16px */
+  --space-5:  1.25rem; /* 20px */
+  --space-6:  1.5rem;  /* 24px */
+  --space-8:  2rem;    /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-20: 5rem;    /* 80px */
+  --space-24: 6rem;    /* 96px */
+
+  /* Typography — sizes */
+  --font-size-micro:   0.75rem;  /* 12 */
+  --font-size-small:   0.875rem; /* 14 */
+  --font-size-body:    1rem;     /* 16 */
+  --font-size-h3:      1.25rem;  /* 20 */
+  --font-size-h2:      1.5rem;   /* 24 */
+  --font-size-h1:      2rem;     /* 32 */
+  --font-size-display: 3rem;     /* 48 */
+
+  /* Typography — line heights */
+  --line-height-tight:   1.05;
+  --line-height-snug:    1.15;
+  --line-height-normal:  1.5;
+  --line-height-relaxed: 1.7;
+
+  /* Typography — letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-snug:   -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+
+  /* Typography — weights */
+  --font-weight-regular: 400;
+  --font-weight-medium:  500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:    700;
+
+  /* Typography — families.
+     --font-sans and --font-mono are set by next/font in /app/layout.tsx;
+     the chain below provides graceful fallback before the font loads. */
+  --font-family-sans: var(--font-sans), ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-family-mono: var(--font-mono), ui-monospace, Menlo, Consolas, monospace;
+
+  /* Radius */
+  --radius-none: 0;
+  --radius-sm:   0.25rem; /*  4px */
+  --radius-md:   0.5rem;  /*  8px */
+  --radius-lg:   0.75rem; /* 12px */
+  --radius-xl:   1rem;    /* 16px */
+  --radius-full: 9999px;
+
+  /* Shadows (avoid overuse — borders preferred) */
+  --shadow-none: none;
+  --shadow-sm:   0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md:   0 4px 12px -2px rgb(0 0 0 / 0.08);
+  --shadow-lg:   0 10px 24px -4px rgb(0 0 0 / 0.10);
+
+  /* Motion */
+  --duration-instant: 100ms;
+  --duration-fast:    150ms;
+  --duration-medium:  200ms;
+  --duration-slow:    300ms;
+  --easing-standard:  cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Touch */
+  --touch-target-min: 2.75rem; /* 44px */
+
+  /* ============================================================
+     LAYER 2 — SEMANTIC (intent-based; what UI references)
+     ============================================================ */
+
+  /* Surfaces */
+  --color-surface-default: var(--color-neutral-0);
+  --color-surface-raised:  var(--color-neutral-50);
+  --color-surface-sunken:  var(--color-neutral-100);
+  --color-surface-inverse: var(--color-neutral-900);
+
+  /* Text */
+  --color-text-primary:    var(--color-neutral-900);
+  --color-text-secondary:  var(--color-neutral-600);
+  --color-text-tertiary:   var(--color-neutral-500);
+  --color-text-disabled:   var(--color-neutral-400);
+  --color-text-on-brand:   var(--color-neutral-0);
+  --color-text-on-inverse: var(--color-neutral-0);
+
+  /* Border */
+  --color-border-subtle:   var(--color-neutral-200);
+  --color-border-default:  var(--color-neutral-300);
+  --color-border-strong:   var(--color-neutral-900);
+  --color-border-focus:    var(--color-brand-500);
+
+  /* Action */
+  --color-action-primary:        var(--color-brand-500);
+  --color-action-primary-hover:  var(--color-brand-600);
+  --color-action-primary-active: var(--color-brand-700);
+  --color-action-secondary:        var(--color-neutral-100);
+  --color-action-secondary-hover:  var(--color-neutral-200);
+  --color-action-danger:        var(--color-danger-600);
+  --color-action-danger-hover:  var(--color-danger-500);
+
+  /* Feedback */
+  --color-feedback-success-bg:   var(--color-success-100);
+  --color-feedback-success-fg:   var(--color-success-600);
+  --color-feedback-warning-bg:   var(--color-accent-100);
+  --color-feedback-warning-fg:   var(--color-accent-600);
+  --color-feedback-danger-bg:    var(--color-danger-100);
+  --color-feedback-danger-fg:    var(--color-danger-600);
+
+  /* ============================================================
+     LAYER 3 — COMPONENT (optional; for native platform parity)
+     ============================================================ */
+
+  --button-height-md:  2.75rem; /* 44px — meets touch target */
+  --button-padding-x:  var(--space-4);
+  --button-radius:     var(--radius-md);
+
+  --input-height:      2.75rem;
+  --input-padding-x:   var(--space-3);
+  --input-radius:      var(--radius-md);
+
+  --card-padding:      var(--space-6);
+  --card-radius:       var(--radius-lg);
+
+  /* ============================================================
+     SHADCN COMPATIBILITY ALIASES
+     ------------------------------------------------------------
+     The shadcn CLI generates components that reference these
+     conventional names. Aliases point at our semantic tokens, so
+     the SEMANTIC LAYER remains the single source of truth. Don't
+     change values here — change them in the semantic layer above
+     and these update automatically.
+     ============================================================ */
+  --background:            var(--color-surface-default);
+  --foreground:            var(--color-text-primary);
+  --card:                  var(--color-surface-raised);
+  --card-foreground:       var(--color-text-primary);
+  --popover:               var(--color-surface-raised);
+  --popover-foreground:    var(--color-text-primary);
+  --primary:               var(--color-action-primary);
+  --primary-foreground:    var(--color-text-on-brand);
+  --secondary:             var(--color-action-secondary);
+  --secondary-foreground:  var(--color-text-primary);
+  --muted:                 var(--color-surface-sunken);
+  --muted-foreground:      var(--color-text-secondary);
+  --accent:                var(--color-action-secondary);
+  --accent-foreground:     var(--color-text-primary);
+  --destructive:           var(--color-action-danger);
+  --destructive-foreground: var(--color-text-on-brand);
+  --border:                var(--color-border-subtle);
+  --input:                 var(--color-border-subtle);
+  --ring:                  var(--color-border-focus);
+  --radius:                var(--radius-md);
+}
+
+/* ============================================================
+   Dark mode — semantic tokens reassigned; primitives unchanged.
+   ============================================================ */
+[data-theme="dark"] {
+  --color-surface-default: var(--color-neutral-950);
+  --color-surface-raised:  var(--color-neutral-900);
+  --color-surface-sunken:  var(--color-neutral-800);
+  --color-surface-inverse: var(--color-neutral-50);
+
+  --color-text-primary:    var(--color-neutral-50);
+  --color-text-secondary:  var(--color-neutral-400);
+  --color-text-tertiary:   var(--color-neutral-500);
+  --color-text-disabled:   var(--color-neutral-600);
+  --color-text-on-inverse: var(--color-neutral-900);
+
+  --color-border-subtle:   var(--color-neutral-800);
+  --color-border-default:  var(--color-neutral-700);
+  --color-border-strong:   var(--color-neutral-50);
+
+  --color-action-secondary:       var(--color-neutral-800);
+  --color-action-secondary-hover: var(--color-neutral-700);
+}
+
+/* ============================================================
+   Reduced motion — applied globally.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

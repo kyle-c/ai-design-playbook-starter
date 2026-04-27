@@ -1,0 +1,18 @@
+{
+  "$description": "Content tokens. Keys are semantic, never descriptive. See /skills/copy.md.",
+  "home": {
+    "eyebrow": "AI Design Playbook",
+    "headline": "Design in code. Ship from day one.",
+    "body": "This starter follows the playbook: codebase is the design system, skill files persist context, and designers ship via PRs. Open the design system to see live tokens, the canvas for a multi-flow overview, or the prototype to step through a flow.",
+    "links": {
+      "designSystem": "Design system",
+      "canvas": "Canvas",
+      "prototype": "Prototype"
+    }
+  },
+  "errors": {
+    "auth.expired": "Your session expired. Sign in to continue.",
+    "form.required": "This field is required.",
+    "network.unreachable": "We couldn't reach the server. Check your connection and try again."
+  }
+}

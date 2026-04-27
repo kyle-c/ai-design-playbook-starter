@@ -1,0 +1,31 @@
+{
+  "$description": "Android variant. Spacing in dp, font sizes in sp. Regenerate via Style Dictionary build.",
+  "color": {
+    "primitive": {
+      "neutral-0":   { "$value": "#FFFFFF", "$type": "color" },
+      "neutral-900": { "$value": "#18181B", "$type": "color" },
+      "brand-500":   { "$value": "#4F46E5", "$type": "color" }
+    },
+    "semantic": {
+      "surface-default": { "$value": "{color.primitive.neutral-0}",   "$type": "color" },
+      "text-primary":    { "$value": "{color.primitive.neutral-900}", "$type": "color" },
+      "action-primary":  { "$value": "{color.primitive.brand-500}",   "$type": "color" }
+    }
+  },
+  "spacing": {
+    "1":  { "$value": "4dp",  "$type": "dimension" },
+    "2":  { "$value": "8dp",  "$type": "dimension" },
+    "3":  { "$value": "12dp", "$type": "dimension" },
+    "4":  { "$value": "16dp", "$type": "dimension" },
+    "6":  { "$value": "24dp", "$type": "dimension" },
+    "8":  { "$value": "32dp", "$type": "dimension" }
+  },
+  "typography": {
+    "size": {
+      "body":    { "$value": "16sp", "$type": "dimension" },
+      "h2":      { "$value": "24sp", "$type": "dimension" },
+      "h1":      { "$value": "32sp", "$type": "dimension" },
+      "display": { "$value": "48sp", "$type": "dimension" }
+    }
+  }
+}

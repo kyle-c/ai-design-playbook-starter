@@ -1,0 +1,129 @@
+import type { Config } from "tailwindcss";
+
+/**
+ * Tailwind is wired to the semantic CSS variables in /styles/tokens.css.
+ * Components MUST use these utility classes (or the var() directly)
+ * — never raw hex codes or px literals.
+ */
+const config: Config = {
+  content: [
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+  ],
+  darkMode: ["class", '[data-theme="dark"]'],
+  theme: {
+    extend: {
+      colors: {
+        /* shadcn aliases (see /styles/tokens.css) — required for the shadcn CLI. */
+        background:  "var(--background)",
+        foreground:  "var(--foreground)",
+        card:        { DEFAULT: "var(--card)",        foreground: "var(--card-foreground)" },
+        popover:     { DEFAULT: "var(--popover)",     foreground: "var(--popover-foreground)" },
+        primary:     { DEFAULT: "var(--primary)",     foreground: "var(--primary-foreground)" },
+        secondary:   { DEFAULT: "var(--secondary)",   foreground: "var(--secondary-foreground)" },
+        muted:       { DEFAULT: "var(--muted)",       foreground: "var(--muted-foreground)" },
+        accent:      { DEFAULT: "var(--accent)",      foreground: "var(--accent-foreground)" },
+        destructive: { DEFAULT: "var(--destructive)", foreground: "var(--destructive-foreground)" },
+        input:       "var(--input)",
+        ring:        "var(--ring)",
+
+        /* Project-native semantic tokens (preferred for product code). */
+        surface: {
+          DEFAULT: "var(--color-surface-default)",
+          raised:  "var(--color-surface-raised)",
+          sunken:  "var(--color-surface-sunken)",
+          inverse: "var(--color-surface-inverse)",
+        },
+        text: {
+          primary:    "var(--color-text-primary)",
+          secondary:  "var(--color-text-secondary)",
+          tertiary:   "var(--color-text-tertiary)",
+          disabled:   "var(--color-text-disabled)",
+          "on-brand": "var(--color-text-on-brand)",
+        },
+        border: {
+          DEFAULT: "var(--border)",                   /* shadcn alias */
+          subtle:  "var(--color-border-subtle)",
+          medium:  "var(--color-border-default)",
+          strong:  "var(--color-border-strong)",
+          focus:   "var(--color-border-focus)",
+        },
+        action: {
+          primary: {
+            DEFAULT: "var(--color-action-primary)",
+            hover:   "var(--color-action-primary-hover)",
+            active:  "var(--color-action-primary-active)",
+          },
+          secondary: {
+            DEFAULT: "var(--color-action-secondary)",
+            hover:   "var(--color-action-secondary-hover)",
+          },
+          danger: {
+            DEFAULT: "var(--color-action-danger)",
+            hover:   "var(--color-action-danger-hover)",
+          },
+        },
+        feedback: {
+          success: { bg: "var(--color-feedback-success-bg)", fg: "var(--color-feedback-success-fg)" },
+          warning: { bg: "var(--color-feedback-warning-bg)", fg: "var(--color-feedback-warning-fg)" },
+          danger:  { bg: "var(--color-feedback-danger-bg)",  fg: "var(--color-feedback-danger-fg)" },
+        },
+      },
+      spacing: {
+        0:  "var(--space-0)",
+        1:  "var(--space-1)",
+        2:  "var(--space-2)",
+        3:  "var(--space-3)",
+        4:  "var(--space-4)",
+        5:  "var(--space-5)",
+        6:  "var(--space-6)",
+        8:  "var(--space-8)",
+        10: "var(--space-10)",
+        12: "var(--space-12)",
+        16: "var(--space-16)",
+        20: "var(--space-20)",
+        24: "var(--space-24)",
+      },
+      borderRadius: {
+        none: "var(--radius-none)",
+        sm:   "var(--radius-sm)",
+        md:   "var(--radius-md)",
+        lg:   "var(--radius-lg)",
+        xl:   "var(--radius-xl)",
+        full: "var(--radius-full)",
+      },
+      fontSize: {
+        micro:   ["var(--font-size-micro)",   { lineHeight: "var(--line-height-normal)" }],
+        small:   ["var(--font-size-small)",   { lineHeight: "var(--line-height-normal)" }],
+        body:    ["var(--font-size-body)",    { lineHeight: "var(--line-height-normal)" }],
+        h3:      ["var(--font-size-h3)",      { lineHeight: "var(--line-height-snug)"   }],
+        h2:      ["var(--font-size-h2)",      { lineHeight: "var(--line-height-snug)"   }],
+        h1:      ["var(--font-size-h1)",      { lineHeight: "var(--line-height-snug)"   }],
+        display: ["var(--font-size-display)", { lineHeight: "var(--line-height-tight)"  }],
+      },
+      fontFamily: {
+        sans: "var(--font-family-sans)",
+        mono: "var(--font-family-mono)",
+      },
+      transitionDuration: {
+        instant: "var(--duration-instant)",
+        fast:    "var(--duration-fast)",
+        medium:  "var(--duration-medium)",
+        slow:    "var(--duration-slow)",
+      },
+      transitionTimingFunction: {
+        standard:   "var(--easing-standard)",
+        emphasized: "var(--easing-emphasized)",
+      },
+      minHeight: {
+        touch: "var(--touch-target-min)",
+      },
+      minWidth: {
+        touch: "var(--touch-target-min)",
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;
