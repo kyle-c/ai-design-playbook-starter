@@ -98,9 +98,22 @@ export function useZoomPan({
     return () => el.removeEventListener("wheel", onWheel);
   }, [minScale, maxScale]);
 
-  /* Drag-to-pan with pointer events. */
+  /* Drag-to-pan with pointer events. Skip if the pointer landed on an
+     interactive child (e.g. the ZoomDock buttons) — otherwise the canvas
+     captures the pointer before the button's click event can fire. */
   const onPointerDown = React.useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     if (e.button !== 0) return;
+    /* Skip if the pointer landed on (or inside) an interactive child like
+       the ZoomDock buttons. We check Element, not HTMLElement — clicking
+       the lucide SVG icon inside a button gives e.target as SVGPathElement,
+       which extends Element but NOT HTMLElement. closest() walks the DOM
+       up regardless of namespace, so this matches the button parent. */
+    if (
+      e.target instanceof Element &&
+      e.target.closest('button, a, input, select, textarea, [role="button"]')
+    ) {
+      return;
+    }
     const el = containerRef.current;
     if (!el) return;
     el.setPointerCapture(e.pointerId);
