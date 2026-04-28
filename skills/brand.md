@@ -2,10 +2,11 @@
 
 > Foundation for all visual work. Read before any UI task.
 > **THIS IS A PLACEHOLDER.** Replace every section before building real screens.
+> The starter ships using the placeholder name "Acme" in `/components/screens/onboarding/welcome.tsx` so you can see something real on screen. Find-and-replace it with your actual product name when you're ready.
 
 ## Identity
 
-- **Product name:** [PRODUCT_NAME]
+- **Product name:** Acme *(placeholder — replace with your product)*
 - **Positioning:** [One sentence. Who is this for, what problem, what makes it different.]
 - **Personality (3 words):** [e.g., calm, direct, generous]
 

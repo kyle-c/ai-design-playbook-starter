@@ -6,16 +6,22 @@
  *
  * Convention: real screens live in /components/screens/[flow]/[screen].tsx
  * and are imported here. Keep this file as a thin registry.
+ *
+ * To scaffold a new flow + screens automatically:
+ *   npm run new-flow -- <flow-id> <screen,screen,screen>
  */
-
-import * as React from "react";
 
 import { WelcomeScreen } from "@/components/screens/onboarding/welcome";
 import { EmailScreen } from "@/components/screens/onboarding/email";
 import { VerifyScreen } from "@/components/screens/onboarding/verify";
 import { ReadyScreen } from "@/components/screens/onboarding/ready";
 
-export type FlowId = "onboarding" | "settings";
+import { OverviewScreen } from "@/components/screens/settings/overview";
+import { NotificationsScreen } from "@/components/screens/settings/notifications";
+import { DangerZoneScreen } from "@/components/screens/settings/danger-zone";
+/* AUTOFLOWS:IMPORTS — npm run new-flow inserts above this line. Do not move. */
+
+import * as React from "react";
 
 export type Screen = {
   id: string;
@@ -24,43 +30,14 @@ export type Screen = {
 };
 
 export type Flow = {
-  id: FlowId;
+  /** Unique id (kebab-case or camelCase). Referenced by /canvas?flow=... */
+  id: string;
   label: string;
   /** Marks the canonical entry-point flow. Optional. */
   entry?: boolean;
   /** Last screen of this flow can hand off to another flow's entry. */
-  nextFlow?: FlowId;
+  nextFlow?: string;
   screens: Screen[];
-};
-
-/* Stub component used by the settings flow until those screens are built.
-   Keeping this here (rather than inline in flow definitions) lets the lint
-   rule about display names stay satisfied. */
-const ComingSoon: React.ComponentType<{ label: string }> = ({ label }) =>
-  React.createElement(
-    "div",
-    {
-      className:
-        "flex h-full w-full flex-col items-center justify-center gap-2 bg-surface-default px-6 text-center",
-    },
-    React.createElement(
-      "p",
-      { className: "text-h3 font-semibold text-text-primary" },
-      label
-    ),
-    React.createElement(
-      "p",
-      { className: "text-small text-text-secondary" },
-      "Placeholder. Build the real layout in /components/screens/settings/."
-    )
-  );
-ComingSoon.displayName = "ComingSoon";
-
-const stub = (label: string): React.ComponentType => {
-  const Component: React.ComponentType = () =>
-    React.createElement(ComingSoon, { label });
-  Component.displayName = `StubScreen(${label})`;
-  return Component;
 };
 
 export const flows: Flow[] = [
@@ -68,6 +45,10 @@ export const flows: Flow[] = [
     id: "onboarding",
     label: "Onboarding",
     entry: true,
+    /* `nextFlow` is illustrative — the demo connects Onboarding → Settings so
+       the graph view shows the cross-flow indigo arrow. Real flows usually
+       hand off based on conditional state; remove or rewire when you build
+       your real flows. */
     nextFlow: "settings",
     screens: [
       { id: "welcome", label: "Welcome", Component: WelcomeScreen },
@@ -80,11 +61,12 @@ export const flows: Flow[] = [
     id: "settings",
     label: "Settings",
     screens: [
-      { id: "overview",      label: "Overview",      Component: stub("Overview") },
-      { id: "notifications", label: "Notifications", Component: stub("Notifications") },
-      { id: "danger-zone",   label: "Danger zone",   Component: stub("Danger zone") },
+      { id: "overview",      label: "Overview",      Component: OverviewScreen },
+      { id: "notifications", label: "Notifications", Component: NotificationsScreen },
+      { id: "danger-zone",   label: "Danger zone",   Component: DangerZoneScreen },
     ],
   },
+  /* AUTOFLOWS:ENTRIES — npm run new-flow inserts above this line. Do not move. */
 ];
 
 export const flowById = (id: string): Flow | undefined =>

@@ -1,5 +1,11 @@
 "use client";
 
+/* Example screen. Demonstrates the rules for everything outside /components/ui:
+   semantic intent classes (bg-surface-default, text-text-primary, action-primary)
+   instead of shadcn aliases, copy from /locales/en.json, no hardcoded strings,
+   touch targets enforced by min-h-touch on the Button primitive.
+   See /skills/components.md for the full naming convention. */
+
 import { Button } from "@/components/ui/button";
 import en from "@/locales/en.json";
 

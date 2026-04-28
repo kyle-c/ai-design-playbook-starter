@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "description": "Code-first design starter following the AI Design Playbook (https://ai-design-playbook.vercel.app).",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,7 +13,11 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "tokens:audit": "node scripts/audit-tokens.mjs",
-    "check": "npm run typecheck && npm run lint && npm run tokens:audit && npm run build",
+    "changelog": "node scripts/build-changelog.mjs",
+    "changelog:check": "node scripts/build-changelog.mjs --check",
+    "new-flow": "node scripts/new-flow.mjs",
+    "test": "node --test scripts/test/*.test.mjs",
+    "check": "npm run typecheck && npm run lint && npm run test && npm run tokens:audit && npm run changelog:check && npm run build",
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {

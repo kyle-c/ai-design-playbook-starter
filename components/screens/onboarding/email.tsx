@@ -28,19 +28,11 @@ export function EmailScreen() {
       return;
     }
 
-    /* Demo: simulate a request. Emails containing "fail" trigger a network
-       error path so the screen can demonstrate that state too. */
+    /* Demo: simulate a request. In a real flow, this would call the auth
+       API and navigate to the verify screen on success. The loading state
+       below is the value to copy — wire your real fetch where the timeout is. */
     setStatus("loading");
-    const fail = value.toLowerCase().includes("fail");
-    window.setTimeout(() => {
-      if (fail) {
-        setStatus("error");
-        setError(t.errors.network);
-      } else {
-        setStatus("idle");
-        /* In a real flow, this would navigate to the verify screen. */
-      }
-    }, 1200);
+    window.setTimeout(() => setStatus("idle"), 1200);
   };
 
   const isLoading = status === "loading";

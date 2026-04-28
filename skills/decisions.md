@@ -45,11 +45,13 @@ ID format: `YYYY-MM-DD-NNN` where NNN is a zero-padded sequence within the day.
 
 ## Weekly changelog generation
 
-Every Friday on the system branch, regenerate `/decisions/CHANGELOG.md` from `log.json`:
+`/decisions/CHANGELOG.md` is **auto-generated** from `log.json` by `npm run changelog`. Don't edit it by hand — your edits will be overwritten.
 
-> "Read `/decisions/log.json`. Generate `/decisions/CHANGELOG.md` grouped by week. For each entry, render: date, type tag, title, one-sentence rationale. Most recent week first."
+The check pipeline (`npm run check`) runs `npm run changelog:check`, which fails CI if the committed CHANGELOG drifts from what `log.json` would produce. So the workflow is:
 
-Commit the regenerated changelog as part of the system PR.
+1. Add an entry to `log.json`.
+2. Run `npm run changelog`.
+3. Commit both files together.
 
 ## Querying decision history
 

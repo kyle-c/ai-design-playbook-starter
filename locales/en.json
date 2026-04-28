@@ -26,8 +26,7 @@
       "back": "Back",
       "errors": {
         "required": "Enter the email address you want to sign in with.",
-        "format": "That doesn't look like an email address. Check for typos.",
-        "network": "We couldn't reach the server. Check your connection and try again."
+        "format": "That doesn't look like an email address. Check for typos."
       }
     },
     "verify": {
@@ -48,6 +47,55 @@
       "headline": "You're ready.",
       "body": "Your workspace is live. Here's what to try first.",
       "ctaPrimary": "Open dashboard"
+    }
+  },
+  "settings": {
+    "overview": {
+      "title": "Settings",
+      "sections": {
+        "account": "Account",
+        "notifications": "Notifications",
+        "privacy": "Privacy",
+        "billing": "Billing & plan",
+        "help": "Help & support"
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "back": "Back to settings",
+      "items": {
+        "emailDigest": {
+          "label": "Weekly digest",
+          "body": "A summary of activity, every Monday morning."
+        },
+        "push": {
+          "label": "Push notifications",
+          "body": "On this device. You can change this per-device later."
+        },
+        "marketing": {
+          "label": "Product updates",
+          "body": "We'll only send when there's something genuinely new."
+        },
+        "sound": {
+          "label": "Sound effects",
+          "body": "Subtle audio feedback for confirmations and alerts."
+        }
+      }
+    },
+    "dangerZone": {
+      "title": "Danger zone",
+      "back": "Back to settings",
+      "warning": "These actions can't be undone. Read carefully.",
+      "signOutEverywhere": {
+        "label": "Sign out everywhere",
+        "body": "End every active session. You'll need to sign in again on every device.",
+        "cta": "Sign out all devices"
+      },
+      "deleteAccount": {
+        "label": "Delete account",
+        "body": "Permanently remove your account and all associated data. This cannot be reversed.",
+        "cta": "Delete account"
+      }
     }
   },
   "errors": {

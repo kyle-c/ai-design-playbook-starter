@@ -23,7 +23,12 @@ jobs:
 
       - run: npm run lint
 
+      - run: npm run test
+
       - name: Token contrast audit (WCAG AA)
         run: npm run tokens:audit
+
+      - name: Decision-log changelog drift check
+        run: npm run changelog:check
 
       - run: npm run build

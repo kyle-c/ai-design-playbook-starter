@@ -67,7 +67,7 @@ If copy doesn't fit, the limit isn't the problem — the copy is.
 ## Implementation rules
 
 1. **All UI copy lives in `/locales/en.json`.** Never hardcode strings in JSX.
-2. **Keys are semantic, not descriptive.** `onboarding.cta.primary`, not `getStartedButton`.
+2. **Keys are nested objects with camelCase leafs.** `onboarding.welcome.ctaPrimary`, not `getStartedButton` and not `onboarding.welcome.cta-primary`. Path = hierarchy; leaf = identifier. Read with `en.onboarding.welcome.ctaPrimary` from any screen.
 3. **Real copy from day one.** Generate the actual string at the same moment as the layout. Placeholder copy distorts spacing and gets shipped.
 4. **No string concatenation.** Use full sentence keys; don't piece sentences from fragments — translation will fail.
 

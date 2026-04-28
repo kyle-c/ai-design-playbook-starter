@@ -26,6 +26,7 @@
   /* Brand */
   --color-brand-50:  #EEF2FF;
   --color-brand-100: #E0E7FF;
+  --color-brand-400: #818CF8; /* Brighter — used for dark-mode focus ring. */
   --color-brand-500: #4F46E5;
   --color-brand-600: #4338CA;
   --color-brand-700: #3730A3;
@@ -34,15 +35,18 @@
   --color-accent-100: #FEF3C7;
   --color-accent-500: #F59E0B;
   --color-accent-600: #D97706;
+  --color-accent-700: #B45309; /* AA on accent-100. */
 
   /* Feedback */
   --color-success-100: #D1FAE5;
   --color-success-500: #10B981;
   --color-success-600: #059669;
+  --color-success-700: #047857; /* AA on success-100. */
   --color-warning-500: #F59E0B;
   --color-danger-100:  #FEE2E2;
   --color-danger-500:  #EF4444;
   --color-danger-600:  #DC2626;
+  --color-danger-700:  #B91C1C; /* AA on danger-100. */
 
   /* Spacing scale (4px base) */
   --space-0:  0;
@@ -150,13 +154,15 @@
   --color-action-danger:        var(--color-danger-600);
   --color-action-danger-hover:  var(--color-danger-500);
 
-  /* Feedback */
+  /* Feedback — fg uses 700-ramp for AA contrast on the 100-ramp tinted bg.
+     The 600-ramp is reserved for solid-color elements like icon strokes
+     against neutral surfaces, where contrast targets differ. */
   --color-feedback-success-bg:   var(--color-success-100);
-  --color-feedback-success-fg:   var(--color-success-600);
+  --color-feedback-success-fg:   var(--color-success-700);
   --color-feedback-warning-bg:   var(--color-accent-100);
-  --color-feedback-warning-fg:   var(--color-accent-600);
+  --color-feedback-warning-fg:   var(--color-accent-700);
   --color-feedback-danger-bg:    var(--color-danger-100);
-  --color-feedback-danger-fg:    var(--color-danger-600);
+  --color-feedback-danger-fg:    var(--color-danger-700);
 
   /* ============================================================
      LAYER 3 — COMPONENT (optional; for native platform parity)
@@ -222,6 +228,10 @@
   --color-border-subtle:   var(--color-neutral-800);
   --color-border-default:  var(--color-neutral-700);
   --color-border-strong:   var(--color-neutral-50);
+  /* Brighten the focus ring in dark mode — brand-500 only clears 2.82:1
+     against neutral-900, below the 3:1 non-text contrast minimum. brand-400
+     is the WCAG-passing alternate. */
+  --color-border-focus:    var(--color-brand-400);
 
   --color-action-secondary:       var(--color-neutral-800);
   --color-action-secondary-hover: var(--color-neutral-700);

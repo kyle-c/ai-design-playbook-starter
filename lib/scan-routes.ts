@@ -1,7 +1,7 @@
 /**
- * Walks /app/ at server-render time and returns every page.tsx as a route
- * the user can actually navigate to. Used by the graph view so designers
- * can spot drift between intended flows (flows.config) and live routes.
+ * Walks /app/ at server-render time and returns every page.tsx as a *product*
+ * route — design-only routes (/canvas, /design-system) are excluded so the
+ * graph view doesn't claim tools are user-facing surfaces.
  *
  * Runs in Node (server component context only). Don't import this in a
  * client component — it will fail to bundle.
@@ -12,10 +12,18 @@ import { join, relative } from "node:path";
 
 const APP_DIR = "app";
 
+/** Routes that exist for designers/devs only. The graph view should never
+ *  list them as live product routes. Keep in sync with the routes that 404
+ *  in production via `if (process.env.NODE_ENV === "production") notFound()`. */
+export const DESIGN_TOOL_ROUTES = new Set<string>([
+  "/canvas",
+  "/design-system",
+]);
+
 export type RouteEntry = {
-  /** URL path, e.g. "/", "/canvas", "/dashboard/[id]" */
+  /** URL path, e.g. "/", "/dashboard/[id]" */
   href: string;
-  /** Filesystem path relative to /app, e.g. "page.tsx", "canvas/page.tsx" */
+  /** Filesystem path relative to /app, e.g. "page.tsx", "dashboard/[id]/page.tsx" */
   source: string;
 };
 
@@ -23,7 +31,9 @@ export function scanRoutes(): RouteEntry[] {
   const root = join(process.cwd(), APP_DIR);
   const out: RouteEntry[] = [];
   walk(root, root, out);
-  return out.sort((a, b) => a.href.localeCompare(b.href));
+  return out
+    .filter((r) => !DESIGN_TOOL_ROUTES.has(r.href))
+    .sort((a, b) => a.href.localeCompare(b.href));
 }
 
 function walk(root: string, dir: string, out: RouteEntry[]) {

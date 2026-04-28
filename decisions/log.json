@@ -49,6 +49,21 @@
       "status": "active",
       "supersedes": [],
       "links": []
+    },
+    {
+      "id": "2026-04-27-004",
+      "date": "2026-04-27",
+      "type": "token",
+      "title": "Add 700-ramp primitives + brand-400; fix component-state contrast failures",
+      "rationale": "Extending /skills/audit-tokens to component-state pairs surfaced 7 real failures: feedback chip text on tinted backgrounds (success/warning/danger fg on bg ~3:1 vs target 4.5:1) and dark-mode focus ring on raised surfaces (2.82:1 vs target 3:1). Added success-700, accent-700, danger-700, brand-400 primitives. Remapped feedback fg tokens to the 700 ramp. Overrode --color-border-focus to brand-400 in dark mode. All 34 pairs now pass.",
+      "alternatives": [
+        "Loosen audit targets to make the failures green (cheating; defeats the purpose)",
+        "Use the 600 ramp for fg and lighten the 100 bg further (would dilute brand identity)"
+      ],
+      "affected_files": ["/styles/tokens.css", "/scripts/audit-tokens.mjs"],
+      "status": "active",
+      "supersedes": [],
+      "links": []
     }
   ]
 }
