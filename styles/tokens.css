@@ -211,6 +211,34 @@
 }
 
 /* ============================================================
+   Explicit light theme — same values as :root, but scoped to
+   `[data-theme="light"]` so a nested wrapper can re-assert the
+   light palette inside a dark-themed page. Used by /design-system
+   to render the light/dark color grids side by side.
+   ============================================================ */
+[data-theme="light"] {
+  --color-surface-default: var(--color-neutral-0);
+  --color-surface-raised:  var(--color-neutral-50);
+  --color-surface-sunken:  var(--color-neutral-100);
+  --color-surface-inverse: var(--color-neutral-900);
+
+  --color-text-primary:    var(--color-neutral-900);
+  --color-text-secondary:  var(--color-neutral-600);
+  --color-text-tertiary:   var(--color-neutral-500);
+  --color-text-disabled:   var(--color-neutral-400);
+  --color-text-on-brand:   var(--color-neutral-0);
+  --color-text-on-inverse: var(--color-neutral-0);
+
+  --color-border-subtle:   var(--color-neutral-200);
+  --color-border-default:  var(--color-neutral-300);
+  --color-border-strong:   var(--color-neutral-900);
+  --color-border-focus:    var(--color-brand-500);
+
+  --color-action-secondary:       var(--color-neutral-100);
+  --color-action-secondary-hover: var(--color-neutral-200);
+}
+
+/* ============================================================
    Dark mode — semantic tokens reassigned; primitives unchanged.
    ============================================================ */
 [data-theme="dark"] {
