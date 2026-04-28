@@ -1,8 +1,9 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Keyboard, X } from "lucide-react";
+import { ArrowLeft, Keyboard, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CanvasView } from "./canvas-view";
 import { PrototypeView } from "./prototype-view";
@@ -115,12 +116,21 @@ export function CanvasShell({
   const visibleCount = visibleFlows.reduce((n, f) => n + f.screens.length, 0);
 
   return (
-    <div className="flex h-dvh w-full bg-[#1a1a1a] text-text-on-inverse">
-      {/* Left flow nav */}
+    <div className="flex h-dvh w-full bg-[#1a1a1a] text-white">
+      {/* Left flow nav. The chrome is always dark — text classes here use
+          explicit white/* opacities (not theme tokens) so dark-mode doesn't
+          flip them to black. */}
       <aside className="flex w-60 shrink-0 flex-col border-r border-white/10 bg-[#141414]">
         <header className="border-b border-white/10 px-4 py-4">
+          <Link
+            href="/"
+            className="mb-2 inline-flex items-center gap-1 text-micro text-white/50 transition-colors hover:text-white"
+          >
+            <ArrowLeft size={12} />
+            Home
+          </Link>
           <p className="text-micro uppercase tracking-wide text-white/50">Design tools</p>
-          <h1 className="text-h3 font-semibold">Canvas</h1>
+          <h1 className="text-h3 font-semibold text-white">Canvas</h1>
         </header>
 
         <nav className="flex-1 overflow-y-auto p-2">
