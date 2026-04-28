@@ -66,15 +66,27 @@ export function PrototypeView({
         {current.flowLabel} · {step + 1} / {total} · {current.screenLabel}
       </div>
 
-      <button
-        type="button"
+      {/* Keyboard-accessible div, NOT a <button>. The button element applies
+          UA defaults (text-align: center, its own font-family) that inherit
+          into the screen, making the SAME screen render differently here vs
+          /canvas (which wraps in a plain div). role+tabIndex+keydown gives us
+          parity in semantics without parity in styling. */}
+      <div
+        role="button"
+        tabIndex={0}
         onClick={next}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            next();
+          }
+        }}
         aria-label="Advance to next screen"
-        className="overflow-hidden rounded-2xl bg-surface-default ring-1 ring-white/10 shadow-2xl"
+        className="cursor-pointer overflow-hidden rounded-2xl bg-surface-default ring-1 ring-white/10 shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
         style={{ width: 390, height: 844 }}
       >
         {screensByKey.get(current.key)}
-      </button>
+      </div>
 
       <div className="flex items-center gap-2">
         <FrameButton

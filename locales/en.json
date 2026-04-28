@@ -1,12 +1,17 @@
 {
   "$description": "Content tokens. Keys are semantic, never descriptive. See /skills/copy.md.",
   "home": {
-    "eyebrow": "AI Design Playbook",
-    "headline": "Design in code. Ship from day one.",
-    "body": "This starter follows the playbook: codebase is the design system, skill files persist context, and designers ship via PRs. Open the canvas to see flows, the design system to see live tokens.",
-    "links": {
-      "canvas": "Open canvas",
-      "designSystem": "Design system"
+    "title": "Projects",
+    "subtitle": "Two projects in this workspace.",
+    "tiles": {
+      "designSystem": {
+        "name": "Design system",
+        "meta": "Tokens, type, and components"
+      },
+      "exampleProject": {
+        "name": "Example project",
+        "meta": "Onboarding & settings flows"
+      }
     }
   },
   "onboarding": {
