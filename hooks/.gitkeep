@@ -1,0 +1,2 @@
+# React hooks live here. Imports use the @/hooks alias declared in components.json.
+# Empty in Phase 1; gets populated as the system grows.

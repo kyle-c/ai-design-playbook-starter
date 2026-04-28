@@ -10,6 +10,7 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "tokens:audit": "node scripts/audit-tokens.mjs",
+    "check": "npm run typecheck && npm run lint && npm run tokens:audit && npm run build",
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {

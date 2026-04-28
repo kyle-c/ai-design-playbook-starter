@@ -69,8 +69,20 @@ If copy doesn't fit, the limit isn't the problem — the copy is.
 1. **All UI copy lives in `/locales/en.json`.** Never hardcode strings in JSX.
 2. **Keys are semantic, not descriptive.** `onboarding.cta.primary`, not `getStartedButton`.
 3. **Real copy from day one.** Generate the actual string at the same moment as the layout. Placeholder copy distorts spacing and gets shipped.
-4. **Pluralization** uses ICU MessageFormat (next-intl handles this).
-5. **No string concatenation.** Use full sentence keys; don't piece sentences from fragments — translation will fail.
+4. **No string concatenation.** Use full sentence keys; don't piece sentences from fragments — translation will fail.
+
+### Loader (current)
+
+This starter uses **static JSON imports** (`import en from "@/locales/en.json"`) for the single English locale. It's the simplest correct setup for one language, and `tsconfig.json`'s `resolveJsonModule` makes the keys typed.
+
+```tsx
+import en from "@/locales/en.json";
+<button>{en.onboarding.cta.primary}</button>
+```
+
+### When you add a second locale, swap to next-intl
+
+Static imports don't scale past one locale. Once you add a second language, install `next-intl` (~12kb), wire its `NextIntlClientProvider` into `app/layout.tsx`, replace direct imports with the `useTranslations()` hook, and add ICU MessageFormat for plurals. **Do not roll your own** — translation pipelines have ten years of edge cases (RTL, plural categories, gender, fallbacks) baked into existing libraries.
 
 ## Voice/tone per market
 

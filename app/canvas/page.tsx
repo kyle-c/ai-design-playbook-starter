@@ -1,48 +1,49 @@
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { flows } from "@/app/flows.config";
+import { scanRoutes } from "@/lib/scan-routes";
+import { CanvasShell } from "./canvas-shell";
 
 /**
- * Canvas — zoomable multi-flow overview.
+ * Canvas — design tool with three modes (canvas / prototype / graph).
  *
  * Design-only route. Per /CLAUDE.md absolute rule #5, this 404s in production.
- * To use: run `npm run dev` and visit /canvas.
+ *
+ * Each screen is pre-rendered on the server and handed to the client shell as
+ * a child wrapped in a div tagged with `data-flow-id` + `data-screen-id`. The
+ * shell groups them into a map and renders the active mode against that data.
+ * Function references can't cross the server-to-client boundary, but rendered
+ * React elements wrapped in plain divs can.
  */
 export default function CanvasPage() {
   if (process.env.NODE_ENV === "production") notFound();
 
-  return (
-    <main className="min-h-dvh bg-surface-sunken">
-      <header className="sticky top-0 z-10 border-b border-subtle bg-surface-default/80 px-6 py-4 backdrop-blur">
-        <h1 className="text-h3 font-semibold">Canvas</h1>
-        <p className="text-small text-text-secondary">
-          All screens across all flows. Click any to inspect.
-        </p>
-      </header>
+  const flowMeta = flows.map((flow) => ({
+    id: flow.id,
+    label: flow.label,
+    entry: !!flow.entry,
+    nextFlow: flow.nextFlow,
+    screens: flow.screens.map((s) => ({ id: s.id, label: s.label })),
+  }));
 
-      <div className="space-y-12 px-6 py-8">
-        {flows.map((flow) => (
-          <section key={flow.id}>
-            <h2 className="mb-4 text-h3 font-semibold">{flow.label}</h2>
-            <div className="flex flex-wrap gap-6">
-              {flow.screens.map((screen) => (
-                <figure key={screen.id} className="flex flex-col items-center gap-2">
-                  <div
-                    className="overflow-hidden rounded-xl border border-subtle bg-surface-default shadow-sm"
-                    style={{ width: 195, height: 422 }}
-                  >
-                    <div style={{ width: 390, height: 844, transform: "scale(0.5)", transformOrigin: "0 0" }}>
-                      <screen.Component />
-                    </div>
-                  </div>
-                  <figcaption className="text-small text-text-secondary">
-                    {screen.label}
-                  </figcaption>
-                </figure>
-              ))}
+  const liveRoutes = scanRoutes();
+
+  return (
+    <Suspense fallback={null}>
+      <CanvasShell flows={flowMeta} liveRoutes={liveRoutes}>
+        {flows.flatMap((flow) =>
+          flow.screens.map((s) => (
+            <div
+              key={`${flow.id}/${s.id}`}
+              data-flow-id={flow.id}
+              data-screen-id={s.id}
+              className="h-full w-full"
+            >
+              <s.Component />
             </div>
-          </section>
-        ))}
-      </div>
-    </main>
+          ))
+        )}
+      </CanvasShell>
+    </Suspense>
   );
 }

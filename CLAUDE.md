@@ -25,8 +25,9 @@
   /prototype/[flow]   Clickable mobile prototype (design-only, never ship)
   flows.config.ts     Flow → ordered screens registry
 /components
-  /ui                 shadcn primitives (theme via tokens; never edit structure)
-  /placeholder        Composite product components (created as flows are built)
+  /ui                 shadcn primitives (theme via tokens; never edit structure; use SHADCN aliases)
+  /composites         Product-specific composites (use SEMANTIC names; created on 3rd repetition)
+  /screens/[flow]     Whole screens, imported by flows.config (use SEMANTIC names)
 /styles
   tokens.css          THE design system. Three layers: primitive → semantic → component
 /skills               Persistent context Claude reads before relevant work
@@ -65,9 +66,9 @@ If unsure which skills apply, read all of them once at session start.
 
 1. **Never hardcode color or spacing values.** Use CSS variables (`var(--color-*)`, `var(--space-*)`) only. No hex codes in components. No `px` literals for spacing.
 2. **Never install npm packages without asking.** Explain why no existing package covers the need before proposing one.
-3. **Never modify `/components/ui` structure.** Theme through tokens. Composite behavior belongs in `/components/placeholder` (or a feature folder).
+3. **Never modify `/components/ui` structure.** Theme through tokens. Composite behavior belongs in `/components/composites` or a screen file.
 4. **Never push to `main`.** All work goes on a feature branch (`design/YYYY-MM-DD-task`) or weekly system branch (`design-system/week-of-YYYY-MM-DD`).
-5. **Never ship `/canvas` or `/prototype` to production.** Design-only routes. They are gated by `NODE_ENV !== 'production'` checks; don't remove those.
+5. **Never ship `/canvas` to production.** Design-only route. Gated by `NODE_ENV !== 'production'` check; don't remove it.
 6. **Never accept placeholder copy.** No Lorem ipsum, no `[Button label]`. Generate real copy at the same time as layout.
 7. **Always add `prefers-reduced-motion` overrides** to any animation longer than 100ms.
 8. **All touch targets ≥ 44×44px on mobile.** No exceptions.

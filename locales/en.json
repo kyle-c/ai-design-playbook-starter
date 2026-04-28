@@ -3,11 +3,51 @@
   "home": {
     "eyebrow": "AI Design Playbook",
     "headline": "Design in code. Ship from day one.",
-    "body": "This starter follows the playbook: codebase is the design system, skill files persist context, and designers ship via PRs. Open the design system to see live tokens, the canvas for a multi-flow overview, or the prototype to step through a flow.",
+    "body": "This starter follows the playbook: codebase is the design system, skill files persist context, and designers ship via PRs. Open the canvas to see flows, the design system to see live tokens.",
     "links": {
-      "designSystem": "Design system",
-      "canvas": "Canvas",
-      "prototype": "Prototype"
+      "canvas": "Open canvas",
+      "designSystem": "Design system"
+    }
+  },
+  "onboarding": {
+    "welcome": {
+      "eyebrow": "Welcome",
+      "headline": "Set up your workspace in three steps.",
+      "body": "We won't ask anything we don't need. You can change it all later from settings.",
+      "ctaPrimary": "Get started",
+      "ctaSecondary": "I have an account"
+    },
+    "email": {
+      "headline": "What's your email?",
+      "body": "We'll send you a sign-in code. No password to remember.",
+      "label": "Email address",
+      "placeholder": "you@example.com",
+      "submit": "Continue",
+      "back": "Back",
+      "errors": {
+        "required": "Enter the email address you want to sign in with.",
+        "format": "That doesn't look like an email address. Check for typos.",
+        "network": "We couldn't reach the server. Check your connection and try again."
+      }
+    },
+    "verify": {
+      "headline": "Check your inbox.",
+      "bodyPrefix": "We sent a 6-digit code to",
+      "label": "Verification code",
+      "submit": "Verify and continue",
+      "back": "Use a different email",
+      "resendIdle": "Resend code",
+      "resendCountdown": "Resend in {seconds}s",
+      "errors": {
+        "incomplete": "Enter the full 6-digit code from your email.",
+        "incorrect": "That code didn't match. Check your email or request a new one."
+      }
+    },
+    "ready": {
+      "eyebrow": "All set",
+      "headline": "You're ready.",
+      "body": "Your workspace is live. Here's what to try first.",
+      "ctaPrimary": "Open dashboard"
     }
   },
   "errors": {

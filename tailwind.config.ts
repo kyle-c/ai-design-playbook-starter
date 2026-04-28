@@ -27,9 +27,12 @@ const config: Config = {
         input:       "var(--input)",
         ring:        "var(--ring)",
 
-        /* Project-native semantic tokens (preferred for product code). */
+        /* Project-native semantic tokens (preferred for product code).
+           `default` is duplicated alongside `DEFAULT` so both `bg-surface`
+           (bare) and `bg-surface-default` (token-name shape) resolve. */
         surface: {
           DEFAULT: "var(--color-surface-default)",
+          default: "var(--color-surface-default)",
           raised:  "var(--color-surface-raised)",
           sunken:  "var(--color-surface-sunken)",
           inverse: "var(--color-surface-inverse)",

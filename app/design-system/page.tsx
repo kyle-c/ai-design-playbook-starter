@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 /**
  * Living style guide. Auto-reflects current values from /styles/tokens.css
@@ -11,14 +12,17 @@ import { Input } from "@/components/ui/input";
 export default function DesignSystemPage() {
   return (
     <main className="mx-auto max-w-5xl px-6 py-12">
-      <header className="mb-12">
-        <p className="text-small uppercase tracking-wide text-text-secondary">Design system</p>
-        <h1 className="mt-2 text-display font-semibold tracking-tight">Living reference</h1>
-        <p className="mt-3 max-w-2xl text-body text-text-secondary">
-          Generated from the codebase. Every swatch, every component, every value below
-          reflects the current state of the system. To change it, edit{" "}
-          <code className="font-mono text-small">/styles/tokens.css</code>.
-        </p>
+      <header className="mb-12 flex items-start justify-between gap-6">
+        <div>
+          <p className="text-small uppercase tracking-wide text-text-secondary">Design system</p>
+          <h1 className="mt-2 text-display font-semibold tracking-tight">Living reference</h1>
+          <p className="mt-3 max-w-2xl text-body text-text-secondary">
+            Generated from the codebase. Every swatch, every component, every value below
+            reflects the current state of the system. To change it, edit{" "}
+            <code className="font-mono text-small">/styles/tokens.css</code>.
+          </p>
+        </div>
+        <ThemeToggle />
       </header>
 
       <Section title="Color — semantic tokens">

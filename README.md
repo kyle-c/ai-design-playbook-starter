@@ -4,6 +4,14 @@ A Next.js + shadcn/ui + Tailwind starter that follows the [AI Design Playbook](h
 
 > **Phase 1 setup, ready to clone.** Replace placeholder brand identity, run the contrast audit, build your first flow.
 
+![Canvas view of the starter, showing two flow tracks of phone-frame mockups against a Figma-style dark canvas](public/screenshots/canvas.png)
+
+A Figma-style canvas, a click-through prototype, and a graph view auto-derived from `flows.config.ts` plus your live `/app/` routes. All three views share zoom, pan, and a fixed flow nav.
+
+| Canvas | Graph | Prototype |
+|---|---|---|
+| ![Canvas](public/screenshots/canvas.png) | ![Graph view with flow tracks and live app routes](public/screenshots/graph.png) | ![Prototype view of the welcome screen](public/screenshots/prototype.png) |
+
 ## What you get
 
 - **`tokens.css`** — three-layer token system (primitive → semantic → component) with dark mode and reduced-motion baked in
@@ -11,27 +19,30 @@ A Next.js + shadcn/ui + Tailwind starter that follows the [AI Design Playbook](h
 - **`CLAUDE.md`** — auto-loaded at every Claude Code session; codifies the 8 absolute rules and your taste preferences
 - **shadcn/ui** integration via `components.json` — `npx shadcn add` works out of the box; primitives are themed through tokens, never structurally modified
 - **`/design-system`** — living style guide auto-reflecting current tokens
-- **`/canvas`** — zoomable multi-flow overview, design-only, 404s in production
-- **`/prototype/[flow]`** — clickable mobile preview, design-only, 404s in production
+- **`/canvas`** — Figma-style design tool with three modes: zoomable canvas, click-through prototype, and an auto-derived graph view. Design-only, 404s in production. Shareable via `/canvas?view=graph&flow=onboarding`.
+- **`/components/screens/onboarding/`** — a real example flow (welcome / email with form validation / 6-digit verify with resend timer / ready) you can read, copy, and replace
 - **`/decisions/log.json` + `CHANGELOG.md`** — structured decision records, weekly auto-changelog
 - **`/locales/en.json`** — content tokens; UI never hardcodes strings
-- **`/tokens/*.json`** — W3C DTCG export plus iOS (pt) and Android (sp/dp) variants
+- **`/tokens/design-tokens.json`** — W3C DTCG export
 - **`npm run tokens:audit`** — WCAG 2.1 contrast audit script that runs against `tokens.css` and exits non-zero on AA failure
+- **`npm run check`** — typecheck + lint + tokens:audit + build, also wired as a GitHub Actions workflow on every PR
+- **Theme toggle** with no-flash inline script, automatic system-preference detection
 
 ## Quick start
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/ai-design-playbook-starter.git
+git clone https://github.com/kyle-c/ai-design-playbook-starter.git
 cd ai-design-playbook-starter
 npm install
 npm run dev
 ```
 
 Open:
-- [http://localhost:3000](http://localhost:3000) — index with links to all design tools
+- [http://localhost:3000](http://localhost:3000) — landing
 - [http://localhost:3000/design-system](http://localhost:3000/design-system) — living style guide
-- [http://localhost:3000/canvas](http://localhost:3000/canvas) — zoomable overview
-- [http://localhost:3000/prototype/onboarding](http://localhost:3000/prototype/onboarding) — clickable prototype
+- [http://localhost:3000/canvas](http://localhost:3000/canvas) — Figma-style design tool (canvas / prototype / graph)
+
+Inside `/canvas`, press `?` to see all keyboard shortcuts.
 
 ## Make it yours
 
@@ -72,20 +83,22 @@ Full text in [CLAUDE.md](./CLAUDE.md).
 ## Folder map
 
 ```
-/app                       Next.js routes
-  /design-system           Living style guide
-  /canvas                  Multi-flow canvas (design-only)
-  /prototype/[flow]        Clickable prototype (design-only)
-  flows.config.ts          Flow → screen registry
+/app                              Next.js routes
+  /design-system                  Living style guide (token reference + components)
+  /canvas                         Design tool: canvas / prototype / graph
+  flows.config.ts                 Flow → screen registry
 /components
-  /ui                      shadcn primitives (themed via tokens)
-  /placeholder             Composite product components
-/styles/tokens.css         THE source of truth
-/skills/*.md               Persistent context for Claude
-/decisions                 Structured decision log + changelog
-/tokens                    W3C DTCG exports (web, iOS, Android)
-/locales/en.json           Content tokens
-/scripts/audit-tokens.mjs  WCAG contrast audit
+  /ui                             shadcn primitives (themed via tokens, shadcn alias names)
+  /screens/[flow]                 Whole screens (semantic intent names)
+  /composites                     Composites — created on the third repetition
+/styles/tokens.css                THE source of truth
+/skills/*.md                      Persistent context for Claude
+/decisions                        Structured decision log + changelog
+/tokens/design-tokens.json        W3C DTCG export
+/locales/en.json                  Content tokens
+/lib/scan-routes.ts               Walks /app/ for the graph view's "Live app routes" track
+/scripts/audit-tokens.mjs         WCAG contrast audit
+/.github/workflows/check.yml      CI: typecheck, lint, tokens:audit, build
 ```
 
 ## Working with Claude Code
@@ -101,7 +114,7 @@ Useful prompts:
 
 This starter deploys cleanly to Vercel:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/YOUR-USERNAME/ai-design-playbook-starter)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kyle-c/ai-design-playbook-starter)
 
 In production, `/canvas` and `/prototype` 404 automatically — they're design-only routes.
 

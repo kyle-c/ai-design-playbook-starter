@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 32" width="200" height="32">
+  <rect width="32" height="32" rx="7" fill="currentColor" fill-opacity="0.06"/>
+  <rect x="6"  y="7"  width="20" height="4" rx="1.5" fill="currentColor" fill-opacity="0.45"/>
+  <rect x="6"  y="14" width="20" height="4" rx="1.5" fill="currentColor" fill-opacity="0.65"/>
+  <rect x="6"  y="21" width="20" height="4" rx="1.5" fill="#4F46E5"/>
+  <text x="44" y="21" font-family="ui-sans-serif, -apple-system, Inter, sans-serif" font-size="14" font-weight="600" fill="currentColor">
+    AI Design Playbook
+  </text>
+</svg>
