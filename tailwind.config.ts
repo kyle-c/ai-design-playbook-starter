@@ -71,6 +71,14 @@ const config: Config = {
           warning: { bg: "var(--color-feedback-warning-bg)", fg: "var(--color-feedback-warning-fg)" },
           danger:  { bg: "var(--color-feedback-danger-bg)",  fg: "var(--color-feedback-danger-fg)" },
         },
+
+        /* Chrome — design-tool-only surfaces. See styles/tokens.css.
+           Do NOT use inside /components/screens. */
+        chrome: {
+          canvas:  "var(--chrome-canvas)",
+          panel:   "var(--chrome-panel)",
+          inset:   "var(--chrome-inset)",
+        },
       },
       spacing: {
         0:  "var(--space-0)",

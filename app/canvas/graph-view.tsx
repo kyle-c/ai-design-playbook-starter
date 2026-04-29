@@ -116,7 +116,7 @@ export function GraphView({
   return (
     <div
       ref={containerRef}
-      className="relative h-full w-full overflow-hidden bg-[#1a1a1a]"
+      className="relative h-full w-full overflow-hidden bg-chrome-canvas"
       style={{
         backgroundImage:
           "radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px)",

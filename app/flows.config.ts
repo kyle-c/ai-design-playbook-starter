@@ -40,6 +40,30 @@ export type Flow = {
   screens: Screen[];
 };
 
+/**
+ * Serializable flow metadata. Strips the `Component` references from
+ * Flow so the shape can cross the server-to-client boundary as plain
+ * JSON. Both /canvas and /prototype/[flow] need this — use
+ * `toFlowMeta(flow)` to derive it from a Flow.
+ */
+export type FlowMeta = {
+  id: string;
+  label: string;
+  entry: boolean;
+  nextFlow?: string;
+  screens: { id: string; label: string }[];
+};
+
+export function toFlowMeta(flow: Flow): FlowMeta {
+  return {
+    id: flow.id,
+    label: flow.label,
+    entry: !!flow.entry,
+    nextFlow: flow.nextFlow,
+    screens: flow.screens.map((s) => ({ id: s.id, label: s.label })),
+  };
+}
+
 export const flows: Flow[] = [
   {
     id: "onboarding",

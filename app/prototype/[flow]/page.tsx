@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
-import { flows, flowById } from "@/app/flows.config";
+import { flows, flowById, toFlowMeta } from "@/app/flows.config";
+import { flowScreenNodes } from "@/app/lib/flow-screens";
 import { PrototypeStandalone } from "./prototype-standalone";
 
 /**
@@ -28,17 +29,9 @@ export default function PrototypeRoutePage({
   const flow = flowById(params.flow);
   if (!flow) notFound();
 
-  const flowMeta = {
-    id: flow.id,
-    label: flow.label,
-    entry: !!flow.entry,
-    nextFlow: flow.nextFlow,
-    screens: flow.screens.map((s) => ({ id: s.id, label: s.label })),
-  };
-
   return (
-    <div className="flex h-dvh w-full flex-col bg-[#1a1a1a] text-white">
-      <header className="flex h-12 shrink-0 items-center gap-4 border-b border-white/10 bg-[#141414] px-4">
+    <div className="flex h-dvh w-full flex-col bg-chrome-canvas text-white">
+      <header className="flex h-12 shrink-0 items-center gap-4 border-b border-white/10 bg-chrome-panel px-4">
         <Link
           href="/canvas"
           className="inline-flex items-center gap-1 text-small text-white/60 transition-colors hover:text-white"
@@ -52,17 +45,8 @@ export default function PrototypeRoutePage({
         </span>
       </header>
       <div className="flex-1 overflow-hidden">
-        <PrototypeStandalone flow={flowMeta}>
-          {flow.screens.map((s) => (
-            <div
-              key={`${flow.id}/${s.id}`}
-              data-flow-id={flow.id}
-              data-screen-id={s.id}
-              className="h-full w-full"
-            >
-              <s.Component />
-            </div>
-          ))}
+        <PrototypeStandalone flow={toFlowMeta(flow)}>
+          {flowScreenNodes(flow)}
         </PrototypeStandalone>
       </div>
     </div>

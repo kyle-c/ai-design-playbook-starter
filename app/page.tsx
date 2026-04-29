@@ -105,7 +105,7 @@ function DesignSystemThumb() {
     <div
       className="relative h-full w-full"
       style={{
-        backgroundColor: "#1a1a1a",
+        backgroundColor: "var(--chrome-canvas)",
         backgroundImage:
           "radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)",
         backgroundSize: "16px 16px",
@@ -153,7 +153,7 @@ function ExampleProjectThumb() {
     <div
       className="relative h-full w-full overflow-hidden"
       style={{
-        backgroundColor: "#1a1a1a",
+        backgroundColor: "var(--chrome-canvas)",
         backgroundImage:
           "radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)",
         backgroundSize: "12px 12px",

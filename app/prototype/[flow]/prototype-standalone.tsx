@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import { PrototypeView } from "@/app/canvas/prototype-view";
-import type { FlowMeta } from "@/app/canvas/canvas-shell";
+import type { FlowMeta } from "@/app/flows.config";
+import { useChildrenMap, flowScreenKey } from "@/lib/use-children-map";
 
 /**
  * Client wrapper around PrototypeView for the deep-link
@@ -18,20 +19,6 @@ export function PrototypeStandalone({
   flow: FlowMeta;
   children: React.ReactNode;
 }) {
-  const screensByKey = React.useMemo(() => {
-    const map = new Map<string, React.ReactNode>();
-    React.Children.forEach(children, (child) => {
-      if (!React.isValidElement(child)) return;
-      const props = child.props as {
-        "data-flow-id"?: string;
-        "data-screen-id"?: string;
-      };
-      const f = props["data-flow-id"];
-      const s = props["data-screen-id"];
-      if (f && s) map.set(`${f}/${s}`, child);
-    });
-    return map;
-  }, [children]);
-
+  const screensByKey = useChildrenMap(children, flowScreenKey);
   return <PrototypeView flows={[flow]} screensByKey={screensByKey} />;
 }

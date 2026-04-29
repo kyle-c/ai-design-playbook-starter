@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { flows } from "@/app/flows.config";
+import { flows, toFlowMeta } from "@/app/flows.config";
+import { flowScreenNodes } from "@/app/lib/flow-screens";
 import { scanRoutes } from "@/lib/scan-routes";
 import { CanvasShell } from "./canvas-shell";
 
@@ -18,31 +19,13 @@ import { CanvasShell } from "./canvas-shell";
 export default function CanvasPage() {
   if (process.env.NODE_ENV === "production") notFound();
 
-  const flowMeta = flows.map((flow) => ({
-    id: flow.id,
-    label: flow.label,
-    entry: !!flow.entry,
-    nextFlow: flow.nextFlow,
-    screens: flow.screens.map((s) => ({ id: s.id, label: s.label })),
-  }));
-
+  const flowMeta = flows.map(toFlowMeta);
   const liveRoutes = scanRoutes();
 
   return (
     <Suspense fallback={null}>
       <CanvasShell flows={flowMeta} liveRoutes={liveRoutes}>
-        {flows.flatMap((flow) =>
-          flow.screens.map((s) => (
-            <div
-              key={`${flow.id}/${s.id}`}
-              data-flow-id={flow.id}
-              data-screen-id={s.id}
-              className="h-full w-full"
-            >
-              <s.Component />
-            </div>
-          ))
-        )}
+        {flows.flatMap(flowScreenNodes)}
       </CanvasShell>
     </Suspense>
   );

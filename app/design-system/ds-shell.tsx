@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { cn } from "@/lib/utils";
+import { useChildrenMap, sectionKey } from "@/lib/use-children-map";
 
 export type DSSection = {
   id: string;
@@ -66,26 +67,17 @@ export function DSShell({
     /* eslint-disable-next-line react-hooks/exhaustive-deps -- router is stable */
   }, [activeId]);
 
-  const sectionsByKey = React.useMemo(() => {
-    const map = new Map<string, React.ReactNode>();
-    React.Children.forEach(children, (child) => {
-      if (!React.isValidElement(child)) return;
-      const props = child.props as { "data-section-id"?: string };
-      const id = props["data-section-id"];
-      if (id) map.set(id, child);
-    });
-    return map;
-  }, [children]);
+  const sectionsByKey = useChildrenMap(children, sectionKey);
 
   const active =
     sections.find((s) => s.id === activeId) ?? sections[0];
 
   return (
-    <div className="flex h-dvh w-full bg-[#1a1a1a] text-white">
+    <div className="flex h-dvh w-full bg-chrome-canvas text-white">
       {/* Left rail — dark chrome, mirrors canvas-shell. Explicit white/*
           opacities (not theme tokens) so dark-mode flip doesn't invert
           the chrome itself. */}
-      <aside className="flex w-64 shrink-0 flex-col border-r border-white/10 bg-[#141414]">
+      <aside className="flex w-64 shrink-0 flex-col border-r border-white/10 bg-chrome-panel">
         <header className="border-b border-white/10 px-4 py-4">
           <Link
             href="/"
@@ -196,7 +188,7 @@ function Toolbar({
   source?: string;
 }) {
   return (
-    <header className="flex h-12 shrink-0 items-center gap-4 border-b border-white/10 bg-[#141414] px-4">
+    <header className="flex h-12 shrink-0 items-center gap-4 border-b border-white/10 bg-chrome-panel px-4">
       <span className="truncate text-small font-medium text-white">{title}</span>
       <div className="ml-auto flex items-center gap-3">
         {source && (

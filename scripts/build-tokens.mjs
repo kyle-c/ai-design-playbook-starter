@@ -22,6 +22,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
+import { compareIgnoringGenerated } from "./lib/drift.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const TOKENS_DIR = resolve(__dirname, "..", "tokens");
@@ -108,12 +109,6 @@ function main() {
     ...transform(src, toAndroid),
   };
 
-  /* Strip our $generated stamp + trailing whitespace before comparing
-     in --check mode, so drift detection isn't fooled by a daily date
-     change or by a missing/added trailing newline. */
-  const normalize = (s) =>
-    s.replace(/"\$generated":\s*"[^"]+",?\s*\n/, "").replace(/\s+$/, "");
-
   const iosOut = JSON.stringify(ios, null, 2) + "\n";
   const androidOut = JSON.stringify(android, null, 2) + "\n";
 
@@ -129,7 +124,7 @@ function main() {
       } catch {
         existing = "";
       }
-      if (normalize(existing) !== normalize(fresh)) {
+      if (!compareIgnoringGenerated(existing, fresh)) {
         console.error(
           `drift: ${path.split("/").slice(-2).join("/")} is out of date with /tokens/design-tokens.json — run \`npm run tokens:build\``
         );

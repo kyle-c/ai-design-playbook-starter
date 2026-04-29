@@ -5,17 +5,14 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArrowLeft, Keyboard, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { isFormElement } from "@/lib/dom";
+import { useChildrenMap, flowScreenKey } from "@/lib/use-children-map";
+import type { FlowMeta } from "@/app/flows.config";
 import { CanvasView } from "./canvas-view";
 import { PrototypeView } from "./prototype-view";
 import { GraphView } from "./graph-view";
 
-export type FlowMeta = {
-  id: string;
-  label: string;
-  entry: boolean;
-  nextFlow?: string;
-  screens: { id: string; label: string }[];
-};
+export type { FlowMeta };
 
 export type LiveRoute = {
   href: string;
@@ -49,23 +46,7 @@ export function CanvasShell({
     urlFlow && (urlFlow === "all" || flows.some((f) => f.id === urlFlow))
       ? urlFlow
       : "all";
-  /* Group server-rendered screens into a map keyed by flowId/screenId. */
-  const screensByKey = React.useMemo(() => {
-    const map = new Map<string, React.ReactNode>();
-    React.Children.forEach(children, (child) => {
-      if (!React.isValidElement(child)) return;
-      const props = child.props as {
-        "data-flow-id"?: string;
-        "data-screen-id"?: string;
-      };
-      const flowId = props["data-flow-id"];
-      const screenId = props["data-screen-id"];
-      if (flowId && screenId) {
-        map.set(`${flowId}/${screenId}`, child);
-      }
-    });
-    return map;
-  }, [children]);
+  const screensByKey = useChildrenMap(children, flowScreenKey);
 
   const [view, setView] = React.useState<ViewMode>(initialView);
   const [flowFilter, setFlowFilter] = React.useState<FlowFilter>(initialFlow);
@@ -116,11 +97,11 @@ export function CanvasShell({
   const visibleCount = visibleFlows.reduce((n, f) => n + f.screens.length, 0);
 
   return (
-    <div className="flex h-dvh w-full bg-[#1a1a1a] text-white">
+    <div className="flex h-dvh w-full bg-chrome-canvas text-white">
       {/* Left flow nav. The chrome is always dark — text classes here use
           explicit white/* opacities (not theme tokens) so dark-mode doesn't
           flip them to black. */}
-      <aside className="flex w-60 shrink-0 flex-col border-r border-white/10 bg-[#141414]">
+      <aside className="flex w-60 shrink-0 flex-col border-r border-white/10 bg-chrome-panel">
         <header className="border-b border-white/10 px-4 py-4">
           <Link
             href="/"
@@ -194,17 +175,6 @@ export function CanvasShell({
   );
 }
 
-function isFormElement(target: EventTarget | null): boolean {
-  if (!(target instanceof HTMLElement)) return false;
-  const tag = target.tagName;
-  return (
-    tag === "INPUT" ||
-    tag === "TEXTAREA" ||
-    tag === "SELECT" ||
-    target.isContentEditable
-  );
-}
-
 const SHORTCUTS: { key: string; label: string }[] = [
   { key: "1", label: "Canvas view" },
   { key: "2", label: "Prototype view" },
@@ -231,7 +201,7 @@ function HelpOverlay({ onClose }: { onClose: () => void }) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-[26rem] rounded-lg border border-white/10 bg-[#141414] p-5 text-white shadow-2xl"
+        className="w-[26rem] rounded-lg border border-white/10 bg-chrome-panel p-5 text-white shadow-2xl"
       >
         <header className="mb-4 flex items-center justify-between">
           <h2 className="text-h3 font-semibold">Keyboard shortcuts</h2>
@@ -251,7 +221,7 @@ function HelpOverlay({ onClose }: { onClose: () => void }) {
               className="flex items-center justify-between gap-4 rounded px-2 py-1.5 text-small"
             >
               <span className="text-white/70">{s.label}</span>
-              <kbd className="rounded border border-white/10 bg-[#0f0f0f] px-2 py-0.5 font-mono text-micro text-white/85">
+              <kbd className="rounded border border-white/10 bg-chrome-inset px-2 py-0.5 font-mono text-micro text-white/85">
                 {s.key}
               </kbd>
             </li>
@@ -302,13 +272,13 @@ function Toolbar({
   screenCount: number;
 }) {
   return (
-    <header className="flex h-12 shrink-0 items-center gap-4 border-b border-white/10 bg-[#141414] px-4">
+    <header className="flex h-12 shrink-0 items-center gap-4 border-b border-white/10 bg-chrome-panel px-4">
       <div className="flex min-w-0 items-baseline gap-2">
         <span className="truncate text-small font-medium text-white">{title}</span>
         <span className="text-micro text-white/40">{screenCount} screens</span>
       </div>
 
-      <div className="ml-auto inline-flex rounded-md border border-white/10 bg-[#0f0f0f] p-0.5">
+      <div className="ml-auto inline-flex rounded-md border border-white/10 bg-chrome-inset p-0.5">
         {(["canvas", "prototype", "graph"] as ViewMode[]).map((v, i) => (
           <button
             key={v}

@@ -61,7 +61,7 @@ export function PrototypeView({
   const current = sequence[step];
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-6 bg-[#1a1a1a] px-6">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-6 bg-chrome-canvas px-6">
       <div className="text-small text-white/60">
         {current.flowLabel} · {step + 1} / {total} · {current.screenLabel}
       </div>

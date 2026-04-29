@@ -61,19 +61,10 @@ export function isAllowlisted(file) {
 export function findViolations(src, file) {
   const issues = [];
 
-  /* Find className-attached arbitrary values. Scan only inside
-     className="..." or className={`...`} strings to avoid hitting
-     example strings inside comments or copy. We do this loosely by
-     extracting class-string regions. */
-  const classRegions = [
-    ...src.matchAll(/className=(?:"([^"]*)"|\{`([^`]*)`\}|\{cn\([^)]*\)\})/g),
-    ...src.matchAll(/className=\{(["'`][^"'`]*["'`])\}/g),
-  ];
-  /* That regex stack is conservative — fall back to scanning the whole
-     file for the bracketed-value patterns since arbitrary values appear
-     only inside class strings in practice. Lower false-positive risk
-     than trying to perfectly extract regions. */
-
+  /* Tailwind arbitrary values use brackets — `bg-[#…]`, `p-[…px]`,
+     etc. — so we can scan the whole file rather than carefully
+     extract `className=` regions. The bracket+prefix shape doesn't
+     appear in normal copy or imports. */
   const hexHits = src.matchAll(HEX_IN_CLASS);
   for (const hit of hexHits) {
     issues.push({

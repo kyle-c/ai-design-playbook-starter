@@ -122,6 +122,18 @@
   --touch-target-min: 2.75rem; /* 44px */
 
   /* ============================================================
+     CHROME — design-tool surfaces (canvas / prototype / design-system
+     shells, project-tile thumbnails on the home page). Intentionally
+     NOT themed: these stay constant whether the page is in light or
+     dark mode, because they belong to design tooling, not product UI.
+     Do not reassign in [data-theme="dark"]; do not use these inside
+     /components/screens or anywhere a real user-facing surface lives.
+     ============================================================ */
+  --chrome-canvas: #1a1a1a; /* The "stage" — page bg of design tools. */
+  --chrome-panel:  #141414; /* Sidebars, toolbars, modal panels. */
+  --chrome-inset:  #0f0f0f; /* Recessed surfaces (kbd, segmented controls). */
+
+  /* ============================================================
      LAYER 2 — SEMANTIC (intent-based; what UI references)
      ============================================================ */
 

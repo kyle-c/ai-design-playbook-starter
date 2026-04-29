@@ -16,6 +16,7 @@
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve, basename } from "node:path";
+import { compareIgnoringGenerated } from "./lib/drift.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const LOCALES_DIR = resolve(__dirname, "..", "locales");
@@ -63,10 +64,6 @@ function build() {
   };
 }
 
-function normalize(s) {
-  return s.replace(/"\$generated":\s*"[^"]+",?\s*\n/, "").replace(/\s+$/, "");
-}
-
 function main() {
   const check = process.argv.includes("--check");
   const inventory = build();
@@ -79,7 +76,7 @@ function main() {
     } catch {
       existing = "";
     }
-    if (normalize(existing) !== normalize(out)) {
+    if (!compareIgnoringGenerated(existing, out)) {
       console.error(
         "drift: /tokens/content-inventory.json is out of date with /locales — run `npm run content:inventory`"
       );

@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Maximize2, Minus, Plus } from "lucide-react";
+import { isFormElement } from "@/lib/dom";
 
 export type ZoomPan = { x: number; y: number; scale: number };
 
@@ -233,17 +234,6 @@ export function useZoomPan({
   return { containerRef, transform, controls, cursor };
 }
 
-function isFormElement(target: EventTarget | null): boolean {
-  if (!(target instanceof HTMLElement)) return false;
-  const tag = target.tagName;
-  return (
-    tag === "INPUT" ||
-    tag === "TEXTAREA" ||
-    tag === "SELECT" ||
-    target.isContentEditable
-  );
-}
-
 export function ZoomDock({
   controls,
   scale,
@@ -252,7 +242,7 @@ export function ZoomDock({
   scale: number;
 }) {
   return (
-    <div className="pointer-events-none absolute bottom-4 right-4 flex items-center gap-1 rounded-md border border-white/10 bg-[#0f0f0f]/95 p-1 text-white shadow-lg backdrop-blur">
+    <div className="pointer-events-none absolute bottom-4 right-4 flex items-center gap-1 rounded-md border border-white/10 bg-chrome-inset/95 p-1 text-white shadow-lg backdrop-blur">
       <DockButton onClick={controls.zoomOut} ariaLabel="Zoom out">
         <Minus size={14} />
       </DockButton>
