@@ -1,0 +1,430 @@
+{
+  "$description": "Auto-generated. Every user-facing string in /locales/*.json with key, char count, and context. Regenerate with `npm run content:inventory`.",
+  "$generated": "2026-04-29",
+  "locales": [
+    "en"
+  ],
+  "count": 60,
+  "items": [
+    {
+      "locale": "en",
+      "key": "home.title",
+      "text": "Projects",
+      "chars": 8,
+      "context": "home"
+    },
+    {
+      "locale": "en",
+      "key": "home.subtitle",
+      "text": "Two projects in this workspace.",
+      "chars": 31,
+      "context": "home"
+    },
+    {
+      "locale": "en",
+      "key": "home.tiles.designSystem.name",
+      "text": "Design system",
+      "chars": 13,
+      "context": "home › tiles › designSystem"
+    },
+    {
+      "locale": "en",
+      "key": "home.tiles.designSystem.meta",
+      "text": "Tokens, type, and components",
+      "chars": 28,
+      "context": "home › tiles › designSystem"
+    },
+    {
+      "locale": "en",
+      "key": "home.tiles.exampleProject.name",
+      "text": "Example project",
+      "chars": 15,
+      "context": "home › tiles › exampleProject"
+    },
+    {
+      "locale": "en",
+      "key": "home.tiles.exampleProject.meta",
+      "text": "Onboarding & settings flows",
+      "chars": 27,
+      "context": "home › tiles › exampleProject"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.welcome.eyebrow",
+      "text": "Welcome",
+      "chars": 7,
+      "context": "onboarding › welcome"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.welcome.headline",
+      "text": "Set up your workspace in three steps.",
+      "chars": 37,
+      "context": "onboarding › welcome"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.welcome.body",
+      "text": "We won't ask anything we don't need. You can change it all later from settings.",
+      "chars": 79,
+      "context": "onboarding › welcome"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.welcome.ctaPrimary",
+      "text": "Get started",
+      "chars": 11,
+      "context": "onboarding › welcome"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.welcome.ctaSecondary",
+      "text": "I have an account",
+      "chars": 17,
+      "context": "onboarding › welcome"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.email.headline",
+      "text": "What's your email?",
+      "chars": 18,
+      "context": "onboarding › email"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.email.body",
+      "text": "We'll send you a sign-in code. No password to remember.",
+      "chars": 55,
+      "context": "onboarding › email"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.email.label",
+      "text": "Email address",
+      "chars": 13,
+      "context": "onboarding › email"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.email.placeholder",
+      "text": "you@example.com",
+      "chars": 15,
+      "context": "onboarding › email"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.email.submit",
+      "text": "Continue",
+      "chars": 8,
+      "context": "onboarding › email"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.email.back",
+      "text": "Back",
+      "chars": 4,
+      "context": "onboarding › email"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.email.errors.required",
+      "text": "Enter the email address you want to sign in with.",
+      "chars": 49,
+      "context": "onboarding › email › errors"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.email.errors.format",
+      "text": "That doesn't look like an email address. Check for typos.",
+      "chars": 57,
+      "context": "onboarding › email › errors"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.verify.headline",
+      "text": "Check your inbox.",
+      "chars": 17,
+      "context": "onboarding › verify"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.verify.bodyPrefix",
+      "text": "We sent a 6-digit code to",
+      "chars": 25,
+      "context": "onboarding › verify"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.verify.label",
+      "text": "Verification code",
+      "chars": 17,
+      "context": "onboarding › verify"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.verify.submit",
+      "text": "Verify and continue",
+      "chars": 19,
+      "context": "onboarding › verify"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.verify.back",
+      "text": "Use another email",
+      "chars": 17,
+      "context": "onboarding › verify"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.verify.resendIdle",
+      "text": "Resend code",
+      "chars": 11,
+      "context": "onboarding › verify"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.verify.resendCountdown",
+      "text": "Resend in {seconds}s",
+      "chars": 20,
+      "context": "onboarding › verify"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.verify.errors.incomplete",
+      "text": "Enter the full 6-digit code from your email.",
+      "chars": 44,
+      "context": "onboarding › verify › errors"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.verify.errors.incorrect",
+      "text": "That code didn't match. Check your email or request a new one.",
+      "chars": 62,
+      "context": "onboarding › verify › errors"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.ready.eyebrow",
+      "text": "All set",
+      "chars": 7,
+      "context": "onboarding › ready"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.ready.headline",
+      "text": "You're ready.",
+      "chars": 13,
+      "context": "onboarding › ready"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.ready.body",
+      "text": "Your workspace is live. Here's what to try first.",
+      "chars": 49,
+      "context": "onboarding › ready"
+    },
+    {
+      "locale": "en",
+      "key": "onboarding.ready.ctaPrimary",
+      "text": "Open dashboard",
+      "chars": 14,
+      "context": "onboarding › ready"
+    },
+    {
+      "locale": "en",
+      "key": "settings.overview.title",
+      "text": "Settings",
+      "chars": 8,
+      "context": "settings › overview"
+    },
+    {
+      "locale": "en",
+      "key": "settings.overview.sections.account",
+      "text": "Account",
+      "chars": 7,
+      "context": "settings › overview › sections"
+    },
+    {
+      "locale": "en",
+      "key": "settings.overview.sections.notifications",
+      "text": "Notifications",
+      "chars": 13,
+      "context": "settings › overview › sections"
+    },
+    {
+      "locale": "en",
+      "key": "settings.overview.sections.privacy",
+      "text": "Privacy",
+      "chars": 7,
+      "context": "settings › overview › sections"
+    },
+    {
+      "locale": "en",
+      "key": "settings.overview.sections.billing",
+      "text": "Billing & plan",
+      "chars": 14,
+      "context": "settings › overview › sections"
+    },
+    {
+      "locale": "en",
+      "key": "settings.overview.sections.help",
+      "text": "Help & support",
+      "chars": 14,
+      "context": "settings › overview › sections"
+    },
+    {
+      "locale": "en",
+      "key": "settings.notifications.title",
+      "text": "Notifications",
+      "chars": 13,
+      "context": "settings › notifications"
+    },
+    {
+      "locale": "en",
+      "key": "settings.notifications.back",
+      "text": "Back to settings",
+      "chars": 16,
+      "context": "settings › notifications"
+    },
+    {
+      "locale": "en",
+      "key": "settings.notifications.items.emailDigest.label",
+      "text": "Weekly digest",
+      "chars": 13,
+      "context": "settings › notifications › items › emailDigest"
+    },
+    {
+      "locale": "en",
+      "key": "settings.notifications.items.emailDigest.body",
+      "text": "A summary of activity, every Monday morning.",
+      "chars": 44,
+      "context": "settings › notifications › items › emailDigest"
+    },
+    {
+      "locale": "en",
+      "key": "settings.notifications.items.push.label",
+      "text": "Push notifications",
+      "chars": 18,
+      "context": "settings › notifications › items › push"
+    },
+    {
+      "locale": "en",
+      "key": "settings.notifications.items.push.body",
+      "text": "On this device. You can change this per-device later.",
+      "chars": 53,
+      "context": "settings › notifications › items › push"
+    },
+    {
+      "locale": "en",
+      "key": "settings.notifications.items.marketing.label",
+      "text": "Product updates",
+      "chars": 15,
+      "context": "settings › notifications › items › marketing"
+    },
+    {
+      "locale": "en",
+      "key": "settings.notifications.items.marketing.body",
+      "text": "We'll only send when there's something genuinely new.",
+      "chars": 53,
+      "context": "settings › notifications › items › marketing"
+    },
+    {
+      "locale": "en",
+      "key": "settings.notifications.items.sound.label",
+      "text": "Sound effects",
+      "chars": 13,
+      "context": "settings › notifications › items › sound"
+    },
+    {
+      "locale": "en",
+      "key": "settings.notifications.items.sound.body",
+      "text": "Subtle audio feedback for confirmations and alerts.",
+      "chars": 51,
+      "context": "settings › notifications › items › sound"
+    },
+    {
+      "locale": "en",
+      "key": "settings.dangerZone.title",
+      "text": "Danger zone",
+      "chars": 11,
+      "context": "settings › dangerZone"
+    },
+    {
+      "locale": "en",
+      "key": "settings.dangerZone.back",
+      "text": "Back to settings",
+      "chars": 16,
+      "context": "settings › dangerZone"
+    },
+    {
+      "locale": "en",
+      "key": "settings.dangerZone.warning",
+      "text": "These actions can't be undone. Read carefully.",
+      "chars": 46,
+      "context": "settings › dangerZone"
+    },
+    {
+      "locale": "en",
+      "key": "settings.dangerZone.signOutEverywhere.label",
+      "text": "Sign out everywhere",
+      "chars": 19,
+      "context": "settings › dangerZone › signOutEverywhere"
+    },
+    {
+      "locale": "en",
+      "key": "settings.dangerZone.signOutEverywhere.body",
+      "text": "End every active session. You'll need to sign in again on every device.",
+      "chars": 71,
+      "context": "settings › dangerZone › signOutEverywhere"
+    },
+    {
+      "locale": "en",
+      "key": "settings.dangerZone.signOutEverywhere.cta",
+      "text": "Sign out all devices",
+      "chars": 20,
+      "context": "settings › dangerZone › signOutEverywhere"
+    },
+    {
+      "locale": "en",
+      "key": "settings.dangerZone.deleteAccount.label",
+      "text": "Delete account",
+      "chars": 14,
+      "context": "settings › dangerZone › deleteAccount"
+    },
+    {
+      "locale": "en",
+      "key": "settings.dangerZone.deleteAccount.body",
+      "text": "Permanently remove your account and all associated data. This cannot be reversed.",
+      "chars": 81,
+      "context": "settings › dangerZone › deleteAccount"
+    },
+    {
+      "locale": "en",
+      "key": "settings.dangerZone.deleteAccount.cta",
+      "text": "Delete account",
+      "chars": 14,
+      "context": "settings › dangerZone › deleteAccount"
+    },
+    {
+      "locale": "en",
+      "key": "errors.auth.expired",
+      "text": "Your session expired. Sign in to continue.",
+      "chars": 42,
+      "context": "errors › auth"
+    },
+    {
+      "locale": "en",
+      "key": "errors.form.required",
+      "text": "This field is required.",
+      "chars": 23,
+      "context": "errors › form"
+    },
+    {
+      "locale": "en",
+      "key": "errors.network.unreachable",
+      "text": "We couldn't reach the server. Check your connection and try again.",
+      "chars": 66,
+      "context": "errors › network"
+    }
+  ]
+}

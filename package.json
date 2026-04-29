@@ -13,11 +13,17 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "tokens:audit": "node scripts/audit-tokens.mjs",
+    "tokens:build": "node scripts/build-tokens.mjs",
+    "tokens:check": "node scripts/build-tokens.mjs --check",
+    "content:inventory": "node scripts/build-content-inventory.mjs",
+    "content:check": "node scripts/build-content-inventory.mjs --check",
+    "audit:copy": "node scripts/audit-copy.mjs",
+    "audit:hardcoded": "node scripts/audit-hardcoded.mjs",
     "changelog": "node scripts/build-changelog.mjs",
     "changelog:check": "node scripts/build-changelog.mjs --check",
     "new-flow": "node scripts/new-flow.mjs",
     "test": "node --test scripts/test/*.test.mjs",
-    "check": "npm run typecheck && npm run lint && npm run test && npm run tokens:audit && npm run changelog:check && npm run build",
+    "check": "npm run typecheck && npm run lint && npm run test && npm run tokens:audit && npm run audit:copy && npm run audit:hardcoded && npm run tokens:check && npm run content:check && npm run changelog:check && npm run build",
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {

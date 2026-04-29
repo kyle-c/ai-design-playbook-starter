@@ -28,6 +28,18 @@ jobs:
       - name: Token contrast audit (WCAG AA)
         run: npm run tokens:audit
 
+      - name: Copy audit (placeholders + char limits)
+        run: npm run audit:copy
+
+      - name: Hardcoded values audit (no hex / px in components)
+        run: npm run audit:hardcoded
+
+      - name: Token export drift check (iOS + Android)
+        run: npm run tokens:check
+
+      - name: Content inventory drift check
+        run: npm run content:check
+
       - name: Decision-log changelog drift check
         run: npm run changelog:check
 

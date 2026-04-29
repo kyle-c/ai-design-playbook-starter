@@ -1,0 +1,61 @@
+{
+  "$description": "Mock User shapes covering the edges from /skills/data-shapes.md. Static import, no fetch.",
+  "$schema": "User from /skills/data-shapes.md",
+  "users": [
+    {
+      "id": "u_001",
+      "email": "kyle@example.com",
+      "name": "Kyle Cooney",
+      "verifiedAt": "2026-04-12T18:32:00Z",
+      "flags": { "betaSettings": true, "pushPreview": false },
+      "preferences": {
+        "emailDigest": true,
+        "push": false,
+        "marketing": false,
+        "sound": true
+      }
+    },
+    {
+      "$comment": "Mid-onboarding — name is null, verifiedAt is null. Screens must handle this without falling back to 'Anonymous'.",
+      "id": "u_002",
+      "email": "new@example.com",
+      "name": null,
+      "verifiedAt": null,
+      "flags": {},
+      "preferences": {
+        "emailDigest": false,
+        "push": false,
+        "marketing": false,
+        "sound": false
+      }
+    },
+    {
+      "$comment": "Long name — pressure-test layout. Avery's full name should clip with ellipsis in 240px nav, not wrap.",
+      "id": "u_003",
+      "email": "avery.bell@reallylonghostname.example.com",
+      "name": "Avery Bell-Fitzgerald-Whitmore",
+      "verifiedAt": "2026-01-04T09:12:00Z",
+      "flags": { "betaSettings": false },
+      "preferences": {
+        "emailDigest": true,
+        "push": true,
+        "marketing": true,
+        "sound": false
+      }
+    },
+    {
+      "$comment": "Verified but invalidated session — used to test the 'sign out everywhere' flow's downstream effects.",
+      "id": "u_004",
+      "email": "test+rotation@example.com",
+      "name": "Test Account",
+      "verifiedAt": "2025-11-18T22:00:00Z",
+      "flags": {},
+      "preferences": {
+        "emailDigest": false,
+        "push": false,
+        "marketing": false,
+        "sound": false
+      }
+    }
+  ]
+}

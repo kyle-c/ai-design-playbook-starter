@@ -51,6 +51,40 @@
       "links": []
     },
     {
+      "id": "2026-04-29-001",
+      "date": "2026-04-29",
+      "type": "library",
+      "title": "Close Phase-1 gaps from the playbook: skill files, audits, exports, prototype route, mocks",
+      "rationale": "Audit against ai-design-playbook.vercel.app surfaced concrete gaps. Added /skills/flows.md, states.md, data-shapes.md (the article's 9th–11th skill files). Added scripts/build-tokens.mjs to emit iOS (pt) + Android (sp/dp) exports from the W3C DTCG source so multi-platform handoff is real, not theoretical. Added scripts/build-content-inventory.mjs producing /tokens/content-inventory.json. Added scripts/audit-copy.mjs (placeholder + char-limit scanner per /skills/copy.md) and scripts/audit-hardcoded.mjs enforcing CLAUDE.md absolute rule #1 (no hex / px literals in product code; allowlists dark-chrome surfaces and shadcn primitives). Added /.github/pull_request_template.md formalizing handoff. Added /mocks/ convention with example user.json covering edges from data-shapes.md. Split /app/prototype/[flow] into its own deep-linkable route (the article specifies it separately from /canvas).",
+      "alternatives": [
+        "Skip multi-platform exports until a native client exists (creates a future migration; cheap to do now)",
+        "Combine prototype into /canvas with view toggles only (loses the per-flow shareable URL the article calls out)",
+        "Lint hardcoded values via a Tailwind plugin instead of a Node scanner (couples the rule to the build chain; a script is easier to adapt as the rule list grows)"
+      ],
+      "affected_files": [
+        "/skills/flows.md",
+        "/skills/states.md",
+        "/skills/data-shapes.md",
+        "/scripts/build-tokens.mjs",
+        "/scripts/build-content-inventory.mjs",
+        "/scripts/audit-copy.mjs",
+        "/scripts/audit-hardcoded.mjs",
+        "/tokens/design-tokens.ios.json",
+        "/tokens/design-tokens.android.json",
+        "/tokens/content-inventory.json",
+        "/.github/pull_request_template.md",
+        "/.github/workflows/check.yml",
+        "/mocks/README.md",
+        "/mocks/user.json",
+        "/app/prototype/[flow]/page.tsx",
+        "/CLAUDE.md",
+        "/package.json"
+      ],
+      "status": "active",
+      "supersedes": [],
+      "links": ["https://ai-design-playbook.vercel.app"]
+    },
+    {
       "id": "2026-04-27-004",
       "date": "2026-04-27",
       "type": "token",

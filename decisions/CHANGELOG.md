@@ -5,6 +5,9 @@
 
 ## Week of 2026-04-27
 
+### `library` Close Phase-1 gaps from the playbook: skill files, audits, exports, prototype route, mocks
+Audit against ai-design-playbook.vercel.app surfaced concrete gaps. Added /skills/flows.md, states.md, data-shapes.md (the article's 9th–11th skill files). Added scripts/build-tokens.mjs to emit iOS (pt) + Android (sp/dp) exports from the W3C DTCG source so multi-platform handoff is real, not theoretical. Added scripts/build-content-inventory.mjs producing /tokens/content-inventory.json. Added scripts/audit-copy.mjs (placeholder + char-limit scanner per /skills/copy.md) and scripts/audit-hardcoded.mjs enforcing CLAUDE.md absolute rule #1 (no hex / px literals in product code; allowlists dark-chrome surfaces and shadcn primitives). Added /.github/pull_request_template.md formalizing handoff. Added /mocks/ convention with example user.json covering edges from data-shapes.md. Split /app/prototype/[flow] into its own deep-linkable route (the article specifies it separately from /canvas).
+
 ### `token` Add 700-ramp primitives + brand-400; fix component-state contrast failures
 Extending /skills/audit-tokens to component-state pairs surfaced 7 real failures: feedback chip text on tinted backgrounds (success/warning/danger fg on bg ~3:1 vs target 4.5:1) and dark-mode focus ring on raised surfaces (2.82:1 vs target 3:1). Added success-700, accent-700, danger-700, brand-400 primitives. Remapped feedback fg tokens to the 700 ramp. Overrode --color-border-focus to brand-400 in dark mode. All 34 pairs now pass.
 

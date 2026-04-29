@@ -39,7 +39,7 @@
       "bodyPrefix": "We sent a 6-digit code to",
       "label": "Verification code",
       "submit": "Verify and continue",
-      "back": "Use a different email",
+      "back": "Use another email",
       "resendIdle": "Resend code",
       "resendCountdown": "Resend in {seconds}s",
       "errors": {

@@ -22,7 +22,7 @@
 /app                  Next.js routes
   /design-system      Living style guide (auto-generated from tokens)
   /canvas             Zoomable multi-flow canvas (design-only, never ship)
-  /prototype/[flow]   Clickable mobile prototype (design-only, never ship)
+  /prototype/[flow]   Deep-link mobile prototype (design-only, never ship)
   flows.config.ts     Flow → ordered screens registry
 /components
   /ui                 shadcn primitives (theme via tokens; never edit structure; use SHADCN aliases)
@@ -36,14 +36,19 @@
   copy.md             Voice, tone, button labels, error structure, char limits
   performance.md      Bundle/LCP/CLS budgets
   components.md       Component library docs (filled in as system grows)
+  flows.md            User journeys, screen sequences, flow handoff
+  states.md           Loading / error / empty / success patterns
+  data-shapes.md      Type definitions and edge cases
   decisions.md        How decisions get logged
+/mocks                Mock JSON data for screens that consume real shapes
 /decisions
   log.json            Structured decision records
   CHANGELOG.md        Human-readable, regenerated weekly
-/tokens
+/tokens                 Auto-generated; regenerate via npm run tokens:build / content:inventory
   design-tokens.json          W3C DTCG export (semantic + primitive)
-  design-tokens.ios.json      pt units
-  design-tokens.android.json  sp/dp units
+  design-tokens.ios.json      pt units (auto from design-tokens.json)
+  design-tokens.android.json  sp/dp units (auto from design-tokens.json)
+  content-inventory.json      Every user-facing string with key, char count, context
 /locales
   en.json             Content tokens (semantic keys, never hardcoded strings)
 /assets
@@ -57,6 +62,9 @@
 - Anything interactive, focus, contrast, ARIA → `/skills/a11y.md`
 - Any user-facing strings → `/skills/copy.md` AND `/locales/en.json`
 - New screens, layouts, components → `/skills/components.md`
+- New flows or screen sequences → `/skills/flows.md` AND `/app/flows.config.ts`
+- Loading / error / empty / success → `/skills/states.md`
+- Anything that consumes or produces real data → `/skills/data-shapes.md`
 - Bundle size, images, perf concerns → `/skills/performance.md`
 - Logging a decision → `/skills/decisions.md`
 
